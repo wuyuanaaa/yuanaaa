@@ -38,10 +38,10 @@ function mySlide() {
     }
 
     $('.l').on('click',function () {
-        change(count+1);
+        change(count-1);
     });
     $('.r').on('click',function () {
-        change(count-1);
+        change(count+1);
     });
     conts.on('click',function () {
         change($(this).data('i'));

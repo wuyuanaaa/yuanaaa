@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul,
+        ol {
+            list-style: none;
+        }
+        body {
+            overflow-x: hidden;
+        }
+        .w {
+            position: relative;
+            height: 700px;
+            width: 1200px;
+            margin: 50px auto;
+        }
+        .slider {
+            position: absolute;
+            width: 5760px;
+            height: 700px;
+            top: 0;
+            left: 50%;
+            margin-left: -2880px;
+        }
+        .slider li {
+            position: absolute;
+            float: left;
+            width: 1920px;
+            height: 700px;
+            top: 0;
+
+        }
+        .slider li:nth-child(1){
+            background: #96ff8e;
+            left:1920px;
+        }
+        .slider li:nth-child(2){
+            background: #f9ff80;
+        }
+        .slider li:nth-child(3){
+            background: #ff6868;
+        }
+        .slider li:nth-child(4){
+            background: #ff93d3;
+        }
+        .slider li:nth-child(5){
+            background: #8691ff;
+        }
+
+        .slider li:nth-child(6){
+            background: #86fcff;
+        }
+
+        .control {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            margin-left: -325px;
+            width: 650px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .control li{
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+            border: 4px solid #230201;
+            float: left;
+            cursor: pointer;
+        }
+        .control li:nth-child(1) {
+            background: #96ff8e;
+        }
+        .control li:nth-child(2) {
+            background: #f9ff80;
+        }
+        .control li:nth-child(3) {
+            background: #ff6868;
+        }
+        .control li:nth-child(4) {
+            background: #ff93d3;
+        }
+        .control li:nth-child(5) {
+            background: #8691ff;
+        }
+        .control li:nth-child(6) {
+            background: #86fcff;
+        }
+        .control li.active {
+            border: 4px solid gold;
+        }
+        .bar>div {
+            font-size:100px;
+            position: absolute;
+            bottom: 300px;
+            cursor: pointer;
+        }
+        .l {
+            left: 0;
+        }
+        .r {
+            right: 0;
+        }
+        .bar>div:hover {
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+<div class="div">
+    <div class="w">
+        <ul class="slider">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ol class="control">
+            <li data-i="0" class="active"></li>
+            <li data-i="1"></li>
+            <li data-i="2"></li>
+            <li data-i="3"></li>
+            <li data-i="4"></li>
+            <li data-i="5"></li>
+        </ol>
+        <div class="bar">
+            <div class="l"><</div>
+            <div class="r">></div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/slider.js"></script>

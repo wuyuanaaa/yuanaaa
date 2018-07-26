@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="//m.ykclass.com/zt/zyImages/ykclass/1532442868804.png">
+    <title>二维码海报生成</title>
+    <link rel="stylesheet" href="./css/index.css?v=88096697af">
+</head>
+<body>
+<ul id="bubble_bg">
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+</ul>
+<div class="help">
+    <h2>二维码海报生成</h2>
+    <div class="tips">
+    	<span class="tips_name">ATTENTION:</span>
+		<p>
+			1.支持jpg/png两种格式图片.
+		</p>
+    	<p>
+    		2.二维码图片建议使用白色底的正方形.
+    	</p>
+    	<p>
+    		3.上传图片正确后右边会有合成后的图片预览，如果没有看见，那可能就是图片上传出错咯.
+    	</p>
+    </div>
+</div>
+<hr>
+<div class="qrcodeContent">
+    <div class="box mainImgBox" id="mainImgBox" draggable="true">
+        <h3 class="title">海报图/主图</h3>
+        <p class="content">点击选框/拖放图片<br>进行上传</p>
+        <p class="info">已选择图片：<br> <span class="imgName" id="mainName"></span></p>
+        <input class="file mainFile" type="file" id="mainFileInput" accept="image/png, image/jpeg">
+    </div>
+    <div class="box wxImgBox" id="wxImgBox" draggable="true">
+        <h3 class="title">二维码</h3>
+        <p class="content">点击选框/拖放图片<br>进行上传</p>
+        <p class="info">已选择图片：<br> <span class="imgName" id="wxName"></span></p>
+        <input class="file wxFile" type="file" id="wxFileInput" accept="image/png, image/jpeg">
+    </div>
+    <div class="download">
+        <button class="downloadBtn" id="downloadBtn">下载海报</button>
+    </div>
+    <!--海报-->
+    <div class="qrcodeCanvas">
+        <div id="qrcodeCanvas"></div>
+    </div>
+</div>
+<div class="bottom">
+    <p class="p-created">Created by <a href="https://github.com/wuyuanaaa">yuanaaa</a></p>
+    <p class="p-info">有任何问题请钉钉联系吴远</p>
+</div>
+</body>
+<script src="//js.ykclass.com/frame/jquery/v2.1.4/jquery.min.js"></script>
+<script src="./js/index.js?v=607f8a9abf"></script>
+</html>

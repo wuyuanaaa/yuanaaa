@@ -144,7 +144,7 @@ $(function() {
                     } else {
                         ctx.drawImage(img,0,0,img.width,img.height);
                         var data = ctx.getImageData(0, 0, img.width, img.height).data;
-                        result = getWxInfo(data,img.width,img.height);
+						result = getWxInfo(data,img.width,img.height);
                         if(result) {
 							drawing(n+1);
                         }else {
@@ -167,7 +167,7 @@ $(function() {
                 var x = i * 4 * w + 4 * j,
                 r = data[x],
                 g = data[x + 1],
-                b = data[x + 1],
+                b = data[x + 2],
                 rgba = {};
                 rgba.x = j;
                 rgba.y = i;
@@ -187,7 +187,8 @@ $(function() {
             result = {
                 lastIndex: 0    // 保存首次X方向直线的lastIndex
             };
-        return getY();
+            getY();
+		return result;
 
         function getY(){
 			for(var i = result.lastIndex; i < arr.length; i++){
@@ -200,11 +201,13 @@ $(function() {
 						result.y = arr[i - 1].y;
 						result.lastIndex = i;
 						getX(data,w,result.y);
-						return result;
-					}
-					count = arr[i].x;
-					times = 0;
-					XArr[times] = arr[i].x
+						break;
+					}else {
+						count = arr[i].x;
+						times = 0;
+						XArr[times] = arr[i].x
+                    }
+
 				}
 			}
 		}
@@ -214,7 +217,7 @@ $(function() {
                 var num = w * 4 * y + XArr[i] * 4;
                 var times = 0;
                 for(var j = 0; j < 190; j++){
-                    if(data[num + 1 + j * 4 * w] > 250 && data[num + 2 + j * 4 * w] > 250 && data[num + 3 + j * 4 * w] > 250){
+                    if(data[num + j * 4 * w] > 250 && data[num + j * 4 * w + 1] > 250 && data[num + j * 4 * w + 2] > 250){
                         times ++;
 						if(times > 180) {   // 此处次数必须比190小
 							find = true;
@@ -228,7 +231,7 @@ $(function() {
 				}
             }
             if(!find) {
-				getY();  //  如果没有找到Y直线  继续找下一条X直线
+				// getY();  //  如果没有找到Y直线  继续找下一条X直线
 			}
 		}
     }

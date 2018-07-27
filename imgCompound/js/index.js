@@ -15,6 +15,11 @@ $(function() {
 	var $radios = $("input[name='mode']");
 	var automation = true;  // 是否为快速模式
 
+	//
+	$('#tips').on('click',function () {
+		$(this).toggleClass('tipsOpen')
+	});
+
 	// 拖拽上传图片
 	$mainImgBox[0].ondragenter = function (event) {   // 清除默认事件，防止浏览器直接打开图片文件
 		event.stopPropagation();
@@ -60,7 +65,11 @@ $(function() {
 
 	// 图片上传事件
 	function mainImgUpload(file) {
-		wxXY = {};
+		wxXY = {
+			x: 200,
+			y: 200,
+			w: 200
+		};
 		$mainName.text(file.name);
 		layer.msg('主图上传成功！');
 		var reader = new FileReader();
@@ -94,6 +103,7 @@ $(function() {
 	// 自由模式下二维码位置改变
     function switchToMode2() {
 		automation = false;
+		var hasMove = false;
 		$finallyImg.on('mousedown', function (event) {
 			event.preventDefault();
 			$code.show().css({
@@ -103,6 +113,7 @@ $(function() {
 			wxXY.x = event.offsetX;
 			wxXY.y = event.offsetY;
 			window.onmousemove = function (event) {
+				hasMove = true;
 				var w = event.clientX  - $code.offset().left;
 				$code.width(w*2);
 				$code.height(w*2);
@@ -111,7 +122,10 @@ $(function() {
 			window.onmouseup = function () {
 				window.onmousemove = null;
 				$code.hide();
-				compound();
+				if(hasMove){
+					compound();
+					hasMove = false;
+				}
 			};
 		});
 	}

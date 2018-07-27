@@ -4,32 +4,34 @@
     <meta charset="utf-8" />
     <link rel="shortcut icon" type="image/x-icon" href="//m.ykclass.com/zt/zyImages/ykclass/1532442868804.png">
     <title>二维码海报生成</title>
-    <link rel="stylesheet" href="./css/index.css?v=1a0888c907">
+    <link rel="stylesheet" href="./css/index.css?v=edc8242151">
 </head>
 <body>
-<ul id="bubble_bg">
-    <li class="bubble"></li>
-    <li class="bubble"></li>
-    <li class="bubble"></li>
-    <li class="bubble"></li>
-    <li class="bubble"></li>
-    <li class="bubble"></li>
-    <li class="bubble"></li>
-    <li class="bubble"></li>
-    <li class="bubble"></li>
-    <li class="bubble"></li>
-    <li class="bubble"></li>
-</ul>
+
 <div class="help">
     <h2>二维码海报生成</h2>
-    <div class="tips">
-    	<span class="tips_name">ATTENTION:</span>
+    <div class="tips tipsOpen" id="tips">
+    	<h4 class="tips_name"><i class="icon-sj">1</i>使用方法：</h4>
 		<p>
-			1.支持jpg/png两种格式图片.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.二维码图片建议使用白色底的正方形.
+			* 仅支持jpg/png图片格式
 		</p>
     	<p>
-
+            * 二维码图片默认等宽高
     	</p>
+        <p>
+            * 仅保证在谷歌、火狐浏览器上功能完全（拒绝IE）
+        </p>
+        <h5>快速模式</h5>
+        <p>*该模式自动识别图片中正方形白色边框，并填充二维码，步骤如下：</p>
+        <p>1.分别上传主图和二维码</p>
+        <p>2.下载图片，如果识别出错，请使用【自由模式】</p>
+        <h5>自由模式</h5>
+        <p>*该模式需在主图中手动划出二维码区域，步骤如下：</p>
+        <p>1.分别上传主图和二维码</p>
+        <p>2.此时二维码会在默认位置</p>
+        <p>3.在主图区域按住鼠标左键（左键点击位置即是二维码左上角位置）并长按拖放改变二维码大小</p>
+        <p>4.可重复【步骤3】进行调整</p>
+        <p>5.下载图片</p>
     </div>
 </div>
 <hr>
@@ -67,15 +69,30 @@
     <!--海报-->
     <div class="qrcodeCanvas">
         <div id="finallyImg"></div>
-        <div id="code" class="code"></div>
+        <div id="code" class="code">
+        </div>
     </div>
 </div>
 <div class="bottom">
     <p class="p-created">Created by <a href="https://github.com/wuyuanaaa">yuanaaa</a></p>
     <p class="p-info">有任何问题请钉钉联系吴远</p>
 </div>
+
+<ul id="bubble_bg">
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+</ul>
 </body>
 <script src="//js.ykclass.com/frame/jquery/v2.1.4/jquery.min.js"></script>
 <script src="//m.ykclass.com/zt/zyjs/layer/layer.js"></script>
-<script src="./js/index.js?v=2d73309537"></script>
+<script src="./js/index.js?v=4b753c7238"></script>
 </html>

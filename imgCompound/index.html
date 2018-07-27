@@ -33,37 +33,40 @@
     </div>
 </div>
 <hr>
+<!--// 页面主体部分-->
 <div class="qrcodeContent">
-    <div class="box mainImgBox" id="mainImgBox" draggable="true">
+    <!--// 上传区域-->
+    <div class="box mainImgBox" id="mainImgBox">
         <h3 class="title">海报图/主图</h3>
         <p class="content">点击选框/拖放图片<br>进行上传</p>
         <p class="info">已选择图片：<br> <span class="imgName" id="mainName">未上传主图</span></p>
         <input class="file mainFile" type="file" id="mainFileInput" accept="image/png, image/jpeg">
     </div>
-    <div class="box wxImgBox" id="wxImgBox" draggable="true">
+    <div class="box wxImgBox" id="codeImgBox" >
         <h3 class="title">二维码</h3>
         <p class="content">点击选框/拖放图片<br>进行上传</p>
-        <p class="info">已选择图片：<br> <span class="imgName" id="wxName">未上传二维码</span></p>
+        <p class="info">已选择图片：<br> <span class="imgName" id="codeName">未上传二维码</span></p>
         <input class="file wxFile" type="file" id="wxFileInput" accept="image/png, image/jpeg">
     </div>
+    <!--// 设置及下载区域-->
     <div class="download">
         <p class="downloadTitle">二维码位置：</p>
         <p class="wxWidth">
-            <input type="radio" id="automation" class="on" name="xy" checked>
-            <label for="automation">快速模式</label>
+            <input type="radio" id="mode1" class="on" name="mode" checked>
+            <label for="mode1">快速模式</label>
         </p>
         <p class="modelMsg">(自动识别白色二维码方框，如果识别失败，请使用自由模式)</p>
         <p class="wxWidth">
-            <input type="radio" id="manumotive" class="off" name="xy">
-            <label for="manumotive">自由模式</label>
+            <input type="radio" id="mode2" class="off" name="mode">
+            <label for="mode2">自由模式</label>
         </p>
         <p class="modelMsg">(按住鼠标拖放自由改变二维码位置)</p>
 
         <button class="downloadBtn" id="downloadBtn">下载海报</button>
     </div>
     <!--海报-->
-    <div class="qrcodeCanvas" id="qrcodeCanvasBox">
-        <div id="qrcodeCanvas"></div>
+    <div class="qrcodeCanvas">
+        <div id="finallyImg"></div>
         <div id="code" class="code"></div>
     </div>
 </div>
@@ -74,5 +77,5 @@
 </body>
 <script src="//js.ykclass.com/frame/jquery/v2.1.4/jquery.min.js"></script>
 <script src="//m.ykclass.com/zt/zyjs/layer/layer.js"></script>
-<script src="./js/index.js?v=a3982c7ff8"></script>
+<script src="./js/index.js?v=2d73309537"></script>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <link rel="shortcut icon" type="image/x-icon" href="//m.ykclass.com/zt/zyImages/ykclass/1532442868804.png">
     <title>二维码海报生成</title>
-    <link rel="stylesheet" href="./css/index.css?v=88096697af">
+    <link rel="stylesheet" href="./css/index.css?v=1a0888c907">
 </head>
 <body>
 <ul id="bubble_bg">
@@ -25,13 +25,10 @@
     <div class="tips">
     	<span class="tips_name">ATTENTION:</span>
 		<p>
-			1.支持jpg/png两种格式图片.
+			1.支持jpg/png两种格式图片.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.二维码图片建议使用白色底的正方形.
 		</p>
     	<p>
-    		2.二维码图片建议使用白色底的正方形.
-    	</p>
-    	<p>
-    		3.上传图片正确后右边会有合成后的图片预览，如果没有看见，那可能就是图片上传出错咯.
+
     	</p>
     </div>
 </div>
@@ -40,21 +37,34 @@
     <div class="box mainImgBox" id="mainImgBox" draggable="true">
         <h3 class="title">海报图/主图</h3>
         <p class="content">点击选框/拖放图片<br>进行上传</p>
-        <p class="info">已选择图片：<br> <span class="imgName" id="mainName"></span></p>
+        <p class="info">已选择图片：<br> <span class="imgName" id="mainName">未上传主图</span></p>
         <input class="file mainFile" type="file" id="mainFileInput" accept="image/png, image/jpeg">
     </div>
     <div class="box wxImgBox" id="wxImgBox" draggable="true">
         <h3 class="title">二维码</h3>
         <p class="content">点击选框/拖放图片<br>进行上传</p>
-        <p class="info">已选择图片：<br> <span class="imgName" id="wxName"></span></p>
+        <p class="info">已选择图片：<br> <span class="imgName" id="wxName">未上传二维码</span></p>
         <input class="file wxFile" type="file" id="wxFileInput" accept="image/png, image/jpeg">
     </div>
     <div class="download">
+        <p class="downloadTitle">二维码位置：</p>
+        <p class="wxWidth">
+            <input type="radio" id="automation" class="on" name="xy" checked>
+            <label for="automation">快速模式</label>
+        </p>
+        <p class="modelMsg">(自动识别白色二维码方框，如果识别失败，请使用自由模式)</p>
+        <p class="wxWidth">
+            <input type="radio" id="manumotive" class="off" name="xy">
+            <label for="manumotive">自由模式</label>
+        </p>
+        <p class="modelMsg">(按住鼠标拖放自由改变二维码位置)</p>
+
         <button class="downloadBtn" id="downloadBtn">下载海报</button>
     </div>
     <!--海报-->
-    <div class="qrcodeCanvas">
+    <div class="qrcodeCanvas" id="qrcodeCanvasBox">
         <div id="qrcodeCanvas"></div>
+        <div id="code" class="code"></div>
     </div>
 </div>
 <div class="bottom">
@@ -63,5 +73,6 @@
 </div>
 </body>
 <script src="//js.ykclass.com/frame/jquery/v2.1.4/jquery.min.js"></script>
-<script src="./js/index.js?v=cfdac13e06"></script>
+<script src="//m.ykclass.com/zt/zyjs/layer/layer.js"></script>
+<script src="./js/index.js?v=a3982c7ff8"></script>
 </html>

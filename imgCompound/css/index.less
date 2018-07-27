@@ -30,21 +30,17 @@ body {
 	background: linear-gradient(to right, #a6b6d2, #6f9dd4);
 }
 
-
 .help {
 	margin: 20px;
 	.tips {
-		border: 1px solid red;
+		border: 1px solid #ff3d25;
 		padding: 5px 0 5px 10px;
 		margin-top:10px;
 	}
 	.tips .tips_name {
-		color: red;
+		color: #ff3d25;
 		font-size: 20px;
 		font-weight: bold;
-	}
-	.tips .redSentence {
-		color: red;
 	}
 	.tips p {
 		line-height: 24px;
@@ -94,11 +90,24 @@ body {
 	left: 220px;
 	width: auto;
 	height: auto;
-	transform: scale(0.4);
+	transform: scale(0.5);
 	transform-origin: left top;
+	.code {
+		.pa();
+		display: none;
+		width: 200px;
+		height: 200px;
+		border: 2px dashed #ee392e;
+		background: #fff;
+	}
 }
 
 .download {
+	.downloadTitle {
+		font-weight: bold;
+		font-size: 18px;
+		line-height: 30px;
+	}
 	.downloadBtn {
 		box-sizing: border-box;
 		width: 200px;
@@ -118,6 +127,12 @@ body {
 	.wxWidth {
 		line-height: 40px;
 	}
+	.modelMsg {
+		width: 200px;
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 1.6;
+	}
 }
 
 
@@ -133,7 +148,7 @@ body {
 		cursor: pointer;
 	}
 	.p-info {
-		color: #11ab83;
+		color: #4317ff;
 		display: none;
 	}
 }

@@ -16,17 +16,14 @@ body {
   margin: 20px;
 }
 .help .tips {
-  border: 1px solid red;
+  border: 1px solid #ff3d25;
   padding: 5px 0 5px 10px;
   margin-top: 10px;
 }
 .help .tips .tips_name {
-  color: red;
+  color: #ff3d25;
   font-size: 20px;
   font-weight: bold;
-}
-.help .tips .redSentence {
-  color: red;
 }
 .help .tips p {
   line-height: 24px;
@@ -73,8 +70,21 @@ body {
   left: 220px;
   width: auto;
   height: auto;
-  transform: scale(0.4);
+  transform: scale(0.5);
   transform-origin: left top;
+}
+.qrcodeCanvas .code {
+  position: absolute;
+  display: none;
+  width: 200px;
+  height: 200px;
+  border: 2px dashed #ee392e;
+  background: #fff;
+}
+.download .downloadTitle {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 30px;
 }
 .download .downloadBtn {
   box-sizing: border-box;
@@ -95,6 +105,12 @@ body {
 .download .wxWidth {
   line-height: 40px;
 }
+.download .modelMsg {
+  width: 200px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.6;
+}
 .bottom {
   position: fixed;
   bottom: 10px;
@@ -107,7 +123,7 @@ body {
   cursor: pointer;
 }
 .bottom .p-info {
-  color: #11ab83;
+  color: #4317ff;
   display: none;
 }
 .bottom:hover .p-info {

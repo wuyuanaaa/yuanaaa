@@ -11,7 +11,7 @@
 <div class="help">
     <h2>二维码海报生成</h2>
     <div class="tips tipsOpen" id="tips">
-    	<h4 class="tips_name"><i class="icon-sj">1</i>使用方法：</h4>
+    	<h4 class="tips_name"><i class="icon-sj">1</i>使用说明：</h4>
 		<p>
 			* 仅支持jpg/png图片格式
 		</p>
@@ -21,17 +21,15 @@
         <p>
             * 仅保证在谷歌、火狐浏览器上功能完全（拒绝IE）
         </p>
-        <h5>快速模式</h5>
-        <p>*该模式自动识别图片中正方形白色边框，并填充二维码，步骤如下：</p>
+        <h5>自动识别</h5>
+        <p>*默认自动识别图片中正方形白色边框，并填充二维码，步骤如下：</p>
         <p>1.分别上传主图和二维码</p>
-        <p>2.下载图片，如果识别出错，请使用【自由模式】</p>
-        <h5>自由模式</h5>
-        <p>*该模式需在主图中手动划出二维码区域，步骤如下：</p>
-        <p>1.分别上传主图和二维码</p>
-        <p>2.此时二维码会在默认位置</p>
-        <p>3.在主图区域按住鼠标左键（左键点击位置即是二维码左上角位置）并长按拖放改变二维码大小</p>
-        <p>4.可重复【步骤3】进行调整</p>
-        <p>5.下载图片</p>
+        <p>2.下载图片</p>
+        <h5>手动调整</h5>
+        <p>*部分情况需手动主图中划出二维码区域，步骤如下：</p>
+        <p>1.在主图区域按住鼠标左键（左键点击位置即是二维码左上角位置）并长按拖放改变二维码大小</p>
+        <p>2.可重复【步骤3】进行调整</p>
+        <p>3.下载图片</p>
     </div>
 </div>
 <hr>
@@ -52,18 +50,8 @@
     </div>
     <!--// 设置及下载区域-->
     <div class="download">
-        <p class="downloadTitle">二维码位置：</p>
-        <p class="wxWidth">
-            <input type="radio" id="mode1" class="on" name="mode" checked>
-            <label for="mode1">快速模式</label>
-        </p>
-        <p class="modelMsg">(自动识别白色二维码方框，如果识别失败，请使用自由模式)</p>
-        <p class="wxWidth">
-            <input type="radio" id="mode2" class="off" name="mode">
-            <label for="mode2">自由模式</label>
-        </p>
-        <p class="modelMsg">(按住鼠标拖放自由改变二维码位置)</p>
-
+        <p class="downloadTitle">手动调整方法：</p>
+        <p class="modelMsg">（自动识别失败时二维码会默认出现在左上角）<br>此时在主图区域长按鼠标左键进行拖放即可移动并改变二维码位置，可重复操作</p>
         <button class="downloadBtn" id="downloadBtn">下载海报</button>
     </div>
     <!--海报-->
@@ -94,5 +82,5 @@
 </body>
 <script src="//js.ykclass.com/frame/jquery/v2.1.4/jquery.min.js"></script>
 <script src="//m.ykclass.com/zt/zyjs/layer/layer.js"></script>
-<script src="./js/index.js?v=4b753c7238"></script>
+<script src="./js/index.js?v=22ba101a5d"></script>
 </html>

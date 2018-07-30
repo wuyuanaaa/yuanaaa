@@ -68,7 +68,8 @@ $(function() {
 		wxXY = {
 			x: 200,
 			y: 200,
-			w: 200
+			w: 200,
+			isDefault: true
 		};
 		$mainName.text(file.name);
 		layer.msg('主图上传成功！');
@@ -85,20 +86,15 @@ $(function() {
 		var reader = new FileReader();
 		reader.onload = function (event) {
 			imgArr[1] = event.target.result;
-			compound();
+			if(imgArr[0] && imgArr[1]) {
+                compound();
+			}
 		};
 		reader.readAsDataURL(file);
 	}
 
-	// 二维码位置模式设置
-    $radios.on('click',function () {
-		if($(this).hasClass('on')){
-            layer.msg('已切换到【快速模式】，将智能识别二维码进行拼图！');
-        }else {
-			layer.msg('已切换到【自由模式】，按住鼠标拖放即可移动二维码！');
-			switchToMode2();
-		}
-	});
+	// 二维码位置设置
+	switchToMode2();
 
 	// 自由模式下二维码位置改变
     function switchToMode2() {
@@ -118,6 +114,7 @@ $(function() {
 				$code.width(w*2);
 				$code.height(w*2);
 				wxXY.w = w*2;
+				wxXY.isDefault = false;
 			};
 			window.onmouseup = function () {
 				window.onmousemove = null;
@@ -137,7 +134,9 @@ $(function() {
 		img.onload = function () {
 			mainWH.w = img.width;
 			mainWH.h = img.height;
-			compound(); // 启动合成
+			if(imgArr[0] && imgArr[1]){
+                compound(); // 启动合成
+			}
 		}
 	}
 
@@ -151,11 +150,7 @@ $(function() {
 		var c = document.createElement('canvas'),
 			ctx = c.getContext('2d'),
             result = {};
-		result = {
-			x: wxXY.x,
-			y: wxXY.y,
-			w: wxXY.w
-		};
+		result = wxXY;
 		c.width = mainWH.w;
 		c.height = mainWH.h;
 
@@ -167,22 +162,21 @@ $(function() {
 					if (n==1) {
                         ctx.drawImage(img,result.x,result.y,result.w,result.w);
 						drawing(n+1);
-						console.log(result);
-						if(result.w){
-							layer.msg('拼图成功，点击【下载海报】即可下载！');
+                        console.log(result);
+                        if(result.isDefault){
+                            layer.msg('拼图失败，请手动设定二维码位置！');
 						}else {
-							layer.msg('拼图失败，建议使用【自由模式】并手动设定二维码位置！');
+                            layer.msg('拼图成功，点击【下载海报】即可下载！');
 						}
+
 					} else {
 						ctx.drawImage(img,0,0,img.width,img.height);
-						if(automation) {
-                            var data = ctx.getImageData(0, 0, img.width, img.height).data;
-                            result = getCodeInfo(data,img.width,img.height);
-							console.log(result);
-							drawing(n+1);
-						}else {
-                            drawing(n+1);
+						var data = ctx.getImageData(0, 0, img.width, img.height).data;
+						var codeInfo = getCodeInfo(data,img.width,img.height);
+						if(result.isDefault) {
+                            result = codeInfo;
 						}
+						drawing(n+1);
 					}
 				}
 			} else {
@@ -195,78 +189,51 @@ $(function() {
 
     // 图片像素点处理
     function getCodeInfo(data,w,h) {
-        var arr = [];
+        var colorRight = {};
         for(var i = 0; i < h; i ++){
             for(var j = 0; j < w; j++){
                 var x = i * 4 * w + 4 * j,
                     r = data[x],
                     g = data[x + 1],
-                    b = data[x + 2],
-                    rgba = {};
-                rgba.x = j;
-                rgba.y = i;
+                    b = data[x + 2];
                 if(r > 250 && g > 250 && b > 250){
-                    arr.push(rgba);
+                    colorRight[j+'-'+i] = true;
                 }
             }
         }
-        return disposeRgbaArr(arr,data,w);
+        return disposeColorRight(colorRight);
     }
 
     // 处理像素点数据
-    function disposeRgbaArr(arr,data,w) {
-        var count = 0,   // 前一个点的值
-            times = 0,   // 连续白点的次数
-            XArr = [],   // 从左至右保存X直线上每个点的X坐标
-            result = {
-                lastIndex: 0    // 保存首次X方向直线的lastIndex
-            };
-        getY();
-        return result;
-
-        function getY(){
-            for(var i = result.lastIndex; i < arr.length; i++){
-                if(arr[i].x == ++count){
+	function disposeColorRight(obj) {
+		var rightObj = obj;
+        var len = 180;  // 白色线条的最小长度
+		var result = {};
+		for(var key in rightObj){
+			var arr = key.split('-');
+            var X = parseInt(arr[0]),
+                Y = parseInt(arr[1]),
+                isOK = false,
+                times = 0;
+			for(var i = 1; i < 200 ; i++) {
+                if(rightObj[(X + i) + '-' + Y] && rightObj[X+ '-' + (Y + i)]) {
+                    isOK = true;
                     times ++;
-                    XArr[times] = arr[i].x;
+                }
+                if(!isOK) {
+                    continue;
                 }else {
-                    if(times > 190) {   // 190为连续白点的阀值  非固定值
-                        result.x = arr[i - 1].x;
-                        result.y = arr[i - 1].y;
-                        result.lastIndex = i;
-                        getX(data,w,result.y);
-                        break;
-                    }else {
-                        count = arr[i].x;
-                        times = 0;
-                        XArr[times] = arr[i].x
-                    }
+                    result = {
+                        x: X,
+                        y: Y,
+                        w: times
+                    };
                 }
             }
-        }
-        function getX(data,w,y) {
-            var find = false;
-            for(var i = 0; i < XArr.length; i++){
-                var num = w * 4 * y + XArr[i] * 4;
-                var times = 0;
-                for(var j = 0; j < 190; j++){
-                    if(data[num + j * 4 * w] > 250 && data[num + j * 4 * w + 1] > 250 && data[num + j * 4 * w + 2] > 250){
-                        times ++;
-                        if(times > 180) {   // 此处次数必须比190小
-                            find = true;
-                            result.x = XArr[0] + i -1;
-                            result.w = XArr.length - i + 1;
-                            return;
-                        }
-                    }else {
-                        times = 0;
-                    }
-                }
+            if(result.w > len){
+                return result;
             }
-            if(!find) {
-                 getY();  //  如果没有找到Y直线  继续找下一条X直线
-            }
-        }
+		}
     }
 
 	// 下载按钮点击事件

@@ -172,9 +172,8 @@ $(function() {
 					} else {
 						ctx.drawImage(img,0,0,img.width,img.height);
 						var data = ctx.getImageData(0, 0, img.width, img.height).data;
-						var codeInfo = getCodeInfo(data,img.width,img.height);
 						if(result.isDefault) {
-                            result = codeInfo;
+                            result = getCodeInfo(data,img.width,img.height);
 						}
 						drawing(n+1);
 					}
@@ -213,23 +212,23 @@ $(function() {
 			var arr = key.split('-');
             var X = parseInt(arr[0]),
                 Y = parseInt(arr[1]),
-                isOK = false,
-                times = 0;
-			for(var i = 1; i < 200 ; i++) {
-                if(rightObj[(X + i) + '-' + Y] && rightObj[X+ '-' + (Y + i)]) {
-                    isOK = true;
-                    times ++;
-                }
-                if(!isOK) {
-                    continue;
-                }else {
-                    result = {
-                        x: X,
-                        y: Y,
-                        w: times
-                    };
-                }
-            }
+                times = 0,
+				i = 0;
+            function isRight() {
+				if(rightObj[(X + i) + '-' + Y] && rightObj[X+ '-' + (Y + i)]){
+					times ++;
+					i++;
+					isRight();
+				}else {
+					result = {
+						x: X,
+						y: Y,
+						w: times
+					};
+				}
+			}
+			isRight();
+
             if(result.w > len){
                 return result;
             }

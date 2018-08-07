@@ -12,7 +12,6 @@ $(function() {
 	var wxXY = {};
 	var mainWH = {};
 	var imgBase64;
-	var $radios = $("input[name='mode']");
 	var automation = true;  // 是否为快速模式
 
 	//
@@ -69,9 +68,9 @@ $(function() {
 			x: 200,
 			y: 200,
 			w: 200,
-			isDefault: true
+			isDefault: 0
 		};
-		$mainName.text(file.name);
+        $mainName.text(file.name);
 		layer.msg('主图上传成功！');
 		var reader = new FileReader();
 		reader.onload = function (event) {
@@ -114,13 +113,13 @@ $(function() {
 				$code.width(w*2);
 				$code.height(w*2);
 				wxXY.w = w*2;
-				wxXY.isDefault = false;
+				wxXY.isDefault = 2;
 			};
 			window.onmouseup = function () {
 				window.onmousemove = null;
 				$code.hide();
 				if(hasMove){
-					compound();
+                    compound();
 					hasMove = false;
 				}
 			};
@@ -148,11 +147,11 @@ $(function() {
 	}
 	function draw(fn) {
 		var c = document.createElement('canvas'),
-			ctx = c.getContext('2d'),
-            result = {};
-		result = wxXY;
-		c.width = mainWH.w;
+			ctx = c.getContext('2d');
+
+        c.width = mainWH.w;
 		c.height = mainWH.h;
+		var result = {};
 
 		function drawing(n) {
 			if (n < imgArr.length) {
@@ -160,10 +159,14 @@ $(function() {
 				img.src = imgArr[n];
 				img.onload = function() {
 					if (n==1) {
-                        ctx.drawImage(img,result.x,result.y,result.w,result.w);
+                        if(wxXY.isDefault === 1){
+                        	wxXY = result;
+							console.log(1);
+						}
+						console.log(wxXY);
+						ctx.drawImage(img,wxXY.x,wxXY.y,wxXY.w,wxXY.w);
 						drawing(n+1);
-                        console.log(result);
-                        if(result.isDefault){
+                        if(wxXY.isDefault === 0){
                             layer.msg('拼图失败，请手动设定二维码位置！');
 						}else {
                             layer.msg('拼图成功，点击【下载海报】即可下载！');
@@ -172,8 +175,9 @@ $(function() {
 					} else {
 						ctx.drawImage(img,0,0,img.width,img.height);
 						var data = ctx.getImageData(0, 0, img.width, img.height).data;
-						if(result.isDefault) {
-                            result = getCodeInfo(data,img.width,img.height);
+						if(wxXY.isDefault === 0){
+							result = getCodeInfo(data,img.width,img.height);
+
 						}
 						drawing(n+1);
 					}
@@ -230,6 +234,7 @@ $(function() {
 			isRight();
 
             if(result.w > len){
+				wxXY.isDefault = 1;
                 return result;
             }
 		}

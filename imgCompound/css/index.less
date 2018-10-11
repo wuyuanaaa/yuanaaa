@@ -18,152 +18,363 @@
 .bb() {
 	box-sizing: border-box;
 }
-
-*{margin: 0;padding: 0;}
+// h5标签
+header,nav,article,section,aside,footer{display:block;}
+// 通用
+html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,span,pre,abbr,address,cite,code,em,img, ins,q,strong,sub,sup,b,i,dl,dt,dd,ol,ul,li,form,label,table,caption,tbody,tfoot,thead,tr, th,td,article,aside,canvas,details,figcaption,figure,footer,header,menu,nav,section, summary,time,mark,audio,video {
+	margin: 0;
+	padding: 0;
+}
+h1, h2, h3, h4, h5, h6, p, a {
+	line-height: 1;
+}
+h3 {
+	font-weight: bold;
+	font-size: 48px;
+	color: #2D3349;
+}
+h4 {
+	font-size: 38px;
+	font-weight: bold;
+}
+h5 {
+	font-size: 24px;
+	color: #333333;
+}
+p {
+	font-size: 16px;
+}
+span {
+	display: inline;
+	line-height: 1;
+}
+// body and html
+body, html {
+	margin: auto;
+	line-height: 1;
+	// 解决浏览器纵向字体放大
+	-webkit-text-size-adjust: 100%;
+	-text-size-adjust: 100%;
+}
 body {
+	overflow-x: hidden;
+}
+body, button, input, select, textarea {
+	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+	font-size: 14px
+}
+// 表单相关
+table {
+	border-collapse: collapse
+}
+input, select, textarea {
+	outline: none;
+	border: none;
+	box-sizing: border-box;
+}
+input:focus {
+	outline: none;
+}
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type='button'] {
+	cursor: pointer;
+}
+input::placeholder {
+	color: #ccc;
+}
+textarea {
+	resize: none
+}
+// img
+img {
+	border: none;
+	vertical-align: top;
+}
+// a标签
+a {
+	cursor: pointer;
 	color: #333;
 }
-html,
-body {
-	width: 100%;
-	height: 100%;
+// ol ul
+ol, ul ,li {
+	list-style: none
 }
-
-.help {
-	margin: 20px;
-	.tips {
-		border: 1px dashed #ff3d25;
-		padding: 5px 0 5px 10px;
-		margin-top:10px;
-		height: auto;
-		cursor: pointer;
-		transition: all 0.3s;
-	}
-	.tips:hover {
-		background: rgba(0,0,0,0.1);
-	}
-	.tips .tips_name {
-		color: #ff3d25;
-		font-weight: bold;
-		padding: 4px 0;
-	}
-	.icon-sj {
-		display: inline-block;
-		text-indent: 9999px;
-		width: 20px;
-		height: 20px;
-		background: url(../images/down.png) no-repeat center;
-		background-size: cover;
-		transform: rotate(0deg);
-		margin-right: 4px;
-	}
-	.tips p,
-	.tips h5{
-		line-height: 24px;
-		font-size: 12px;
-		margin-left: 12px;
-	}
-	.tips h5 {
-		font-size: 14px;
-	}
-	.tipsOpen {
-		height: 30px;
-		overflow: hidden;
-		.icon-sj {
-			transform: rotate(-90deg);
-		}
-	}
+// 清除浮动
+.clearfix:after, .clearfix:before {
+	content: "";
+	display: table
 }
-
-.qrcodeContent {
+.clearfix:after {
+	clear: both
+}
+.clearfix {
+	*zoom: 1
+}
+// 版心自带clearfix
+.w {
+	box-sizing: border-box;
+	width: 1200px;
+	min-width: 1200px;
+	margin: auto;
 	position: relative;
-	margin: 20px;
-	.box {
-		box-sizing: border-box;
-		width: 200px;
-		height: 200px;
-		margin-bottom: 20px;
-		border: 4px dashed #ddd;
-		cursor: pointer;
-		padding: 10px;
-	}
-	.box:hover {
-		background: rgba(82,212,165,.3);
-	}
-	.title,
-	.content,
-	.info {
-		line-height: 1.6;
+	*zoom: 1
+}
+.w:after, .w:before {
+	content: " ";
+	display: table
+}
+.w:after {
+	clear: both
+}
+// 按钮样式
+button {
+	display: block;
+	border: 0;
+	font-weight: bold;
+	box-sizing: border-box;
+	.trs();
+	cursor: pointer;
+	outline: none;
+}
+// ico
+i {
+	display: inline-block;
+}
+i[class^='ico'] {
+	.bgs();
+	.pa();
+}
+
+// 页面内容开始
+.header {
+	.h-left {
+		float: left;
 	}
 	.title {
-		margin-bottom: 10px;
+		width: 482px;
+		margin: 48px 0 40px;
 	}
-	.info {
-		margin-top: 10px;
-		color: #666;
-		font-size: 14px;
+	.explain-left,
+	.explain-right {
+		float: left;
 	}
-	.imgName {
-		color: #ff685b;
+	.explain-right {
+		&>li {
+			margin-bottom: 14px;
+		}
+	}
+	.t-red {
+		color: #FF0000;
+	}
+	.h-right {
+		float: right;
+		text-align: center;
+	}
+	.right-gif {
+		width: 230px;
+	}
+}
+
+.main {
+	.bb();
+	padding: 0 60px 40px;
+	margin: 20px auto 60px;
+	width: 1200px;
+	background: rgba(255,255,255,0.7);
+	border-radius: 10px;
+	box-shadow: 0 0 30px #F0E8D4;
+	overflow: hidden;
+	.main-left {
+		float: left;
+	}
+	.left-item {
+		margin: 80px 0 0;
+	}
+	.left-item-p {
+		margin: 0 0 40px;
+		font-size: 30px;
+		color: #4A370C;
+	}
+	.icon {
+		margin: 2px 15px 0 0;
+	}
+	.imgBox {
+		.bb();
+		float: left;
+		padding-left: 20px;
+		width: 364px;
+		background: #F0F0F0;
+		border-radius: 10px;
+		color: #999;
+		font-size: 18px;
+		&>p {
+			line-height: 73px;
+		}
 	}
 	.file {
 		display: none;
 	}
+	.imgBox-btn {
+		float: left;
+		margin-left: 22px;
+		width: 154px;
+		height: 73px;
+		background: #D7CCB1;
+		border-radius: 10px;
+		font-size: 24px;
+		color: #4A370C;
+		font-weight: normal;
+		&:hover {
+			color: #fff;
+			box-shadow: 0 0 20px #ddd;
+		}
+	}
+	.download {
+		margin: 100px;
+		width: 231px;
+		height: 68px;
+		background: #D7CCB1;
+		color: #574622;
+		font-size: 30px;
+		font-weight: normal;
+		border-radius: 34px;
+		&:hover {
+			color: #fff;
+			box-shadow: 0 0 20px #ddd;
+		}
+	}
+	.main-right {
+		float: right;
+		width: 422px;
+		.right-p {
+			padding: 40px 0 30px;
+			font-size: 20px;
+			color: #4a370c;
+			text-align: center;
+		}
+		.finalImgBox {
+			display: none;
+			.pr();
+			.bb();
+			margin: 0 auto;
+			width: 420px;
+			height: auto;
+			border: 10px solid #fff;
+			box-shadow: 0 0 20px #ddd;
+			background: #eaeaea;
+			&::after,
+			&::before {
+				.pa();
+				top: -228px;
+				content: '';
+				width: 22px;
+				height: 225px;
+				background: url(../images/icon3.png) no-repeat center;
+			}
+			&::after {
+				right: 10%;
+			}
+			&::before {
+				left: 10%;
+			}
+			.code {
+				.pa();
+				top: 0;
+				left: 0;
+				display: none;
+				width: 200px;
+				height: 200px;
+				border: 1px dashed #ee392e;
+				background: #fff;
+			}
+
+		}
+		.finalImg>img {
+			width: 400px;
+		}
+	}
 }
 
-.qrcodeCanvas {
-	position: absolute;
+.f-right {
+	position: fixed;
+	top: 40%;
+	right: 20px;
+	width: 60px;
+	height: 60px;
+	background: #b5aa8e url(../images/icon4.png) no-repeat center;
+	border-radius: 50%;
+	cursor: help;
+}
+
+.f-center {
+	position: fixed;
+	display: none;
 	top: 0;
-	left: 220px;
-	width: auto;
-	height: auto;
-	transform: scale(0.5);
-	transform-origin: left top;
-	.code {
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.3);
+	.content {
+		position: absolute;
+		.bb();
+		padding: 30px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		width: 584px;
+		height: 421px;
+		border-radius: 50px;
+		background: #f4f5ec;
+		box-shadow: 0 0 30px #888;
+	}
+	.close {
 		.pa();
-		top: 0;
-		left: 0;
-		display: none;
-		width: 200px;
-		height: 200px;
-		border: 2px dashed #ee392e;
-		background: #fff;
-
-	}
-}
-
-.download {
-	.downloadTitle {
-		font-weight: bold;
-		font-size: 18px;
-		line-height: 30px;
-	}
-	.downloadBtn {
-		box-sizing: border-box;
-		width: 200px;
+		right: 20px;
+		top: 20px;
+		width: 40px;
 		height: 40px;
-		margin: 10px 0;
-		background: transparent;
-		border: 2px solid #ddd;
+		border-radius: 50%;
+		border: 2px solid #bfbfbf;
+		background: url(../images/icon5.png) no-repeat center;
+		background-size: 30px 30px;
+		cursor: pointer;
+		.trs();
+		&:hover {
+			background-image: url(../images/icon6.png);
+			border-color: #f9f9f9;
+			transform: rotate(180deg);
+		}
+	}
+	.title {
+		font-size: 30px;
+		color: #3B2C0A;
+		text-align: center;
+	}
+	.p1 {
+		margin-top: 30px;
+		color: #3B2C0A;
 		font-weight: bold;
-		font-size: 22px;
-		transition: all 0.3s;
+		font-size: 20px;
 	}
-	.downloadBtn:hover {
-		background: rgba(82,212,165,.5);
-		border: 0;
-		color: #fff;
+	.p2 {
+		color: #e90000;
+		font-size: 14px;
+		line-height: 2;
 	}
-	.wxWidth {
-		line-height: 40px;
-	}
-	.modelMsg {
-		width: 200px;
-		font-size: 12px;
-		font-weight: bold;
-		line-height: 1.6;
+	.p3 {
+		color: #3B2C0A;
+		font-size: 16px;
+		line-height: 1.8;
 	}
 }
+
 
 .bottom {
 	position: fixed;
@@ -175,14 +386,8 @@ body {
 		font-size: 14px;
 		cursor: pointer;
 	}
-	.p-info {
-		color: #4317ff;
-		display: none;
-	}
 }
-.bottom:hover .p-info {
-	display: block;
-}
+
 
 #bubble_bg {
 	position: fixed;
@@ -194,7 +399,7 @@ body {
 	min-width: 1200px;
 	height: 100%;
 	list-style: none;
-	background: linear-gradient(to right, #a6b6d2, #6f9dd4);
+	background: #f8f5ee;
 	.bubble {
 		position: absolute;
 		z-index: -1;
@@ -202,7 +407,7 @@ body {
 		left: 2%;
 		width: 50px;
 		height: 50px;
-		background: rgba(255, 255, 255, 0.15);
+		background: #EDE5D4;
 		animation: bubbleMove 27s linear infinite;
 	}
 	.bubble:nth-of-type(2) {

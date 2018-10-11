@@ -2,22 +2,31 @@ $(function() {
 	var $mainImgBox = $('#mainImgBox');
 	var $codeImgBox = $('#codeImgBox');
 	var $mainFileInput = $('#mainFileInput');
-	var $codeFileInput = $('#wxFileInput');
+	var $codeFileInput = $('#codeFileInput');
 	var $downloadBtn = $('#downloadBtn');
 	var $mainName = $('#mainName');
 	var $codeName = $('#codeName');
 	var $code = $('#code');
+	var $finalImgBox = $('#finalImgBox');
 	var $finallyImg = $('#finallyImg');
+	var $help = $('#help');
+	var $helpText = $('#helpText');
+	var $close = $('#close');
 	var imgArr = [];
 	var wxXY = {};
 	var mainWH = {};
 	var imgBase64;
 	var automation = true;  // 是否为快速模式
 
-	//
-	$('#tips').on('click',function () {
-		$(this).toggleClass('tipsOpen')
+	// help
+	$help.on('click',function () {
+		$helpText.fadeIn();
 	});
+
+	$close.on('click',function () {
+		$helpText.fadeOut();
+	});
+
 
 	// 拖拽上传图片
 	$mainImgBox[0].ondragenter = function (event) {   // 清除默认事件，防止浏览器直接打开图片文件
@@ -51,9 +60,9 @@ $(function() {
 	};
 
 	// 点击上传图片
-	$('.box').on('click',function (event) {  // 父盒子的点击事件传递给file input
+	$('.imgBox-btn').on('click',function (event) {  // 父盒子的点击事件传递给file input
 		event.stopPropagation();
-		$(this).find('.file')[0].click();
+		$(this).prev().find('.file')[0].click();
 	});
 	$mainFileInput.on('change',function () {
 		mainImgUpload(this.files[0]);
@@ -105,14 +114,14 @@ $(function() {
 				top: event.offsetY + 'px',
 				left: event.offsetX + 'px'
 			});
-			wxXY.x = event.offsetX;
-			wxXY.y = event.offsetY;
+			wxXY.x = event.offsetX*mainWH.w/400;
+			wxXY.y = event.offsetY*mainWH.w/400;
 			window.onmousemove = function (event) {
 				hasMove = true;
 				var w = event.clientX  - $code.offset().left;
-				$code.width(w*2);
-				$code.height(w*2);
-				wxXY.w = w*2;
+				$code.width(w-2);
+				$code.height(w-2);
+				wxXY.w = w*mainWH.w/400;
 				wxXY.isDefault = 2;
 			};
 			window.onmouseup = function () {
@@ -142,6 +151,7 @@ $(function() {
 	//生成画布
 	function compound(){
 		draw(function(){
+			$finalImgBox.show();
 			$finallyImg.html('<img src="'+imgBase64+'">');
 		})
 	}

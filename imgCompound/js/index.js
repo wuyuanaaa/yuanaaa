@@ -11,53 +11,39 @@ $(function() {
 	var $finallyImg = $('#finallyImg');
 	var $help = $('#help');
 	var $helpText = $('#helpText');
-	var $close = $('#close');
-	var imgArr = [];
-	var wxXY = {};
-	var mainWH = {};
+	var imgArr = [];            // 图片数据
+	var wxXY = {};				// 二维码位置信息
+	var mainWH = {};			// 主图大小
 	var imgBase64;
-	var automation = true;  // 是否为快速模式
 
-	// help
+	// 说明信息窗口事件
 	$help.on('click',function () {
 		$helpText.fadeIn();
 	});
-
-	$close.on('click',function () {
+    $helpText.on('click','#close',function () {
 		$helpText.fadeOut();
 	});
 
-
-	// 拖拽上传图片
-	$mainImgBox[0].ondragenter = function (event) {   // 清除默认事件，防止浏览器直接打开图片文件
-		event.stopPropagation();
-		event.preventDefault();
-	};
-	$mainImgBox[0].ondragover = function (event) {
-		event.stopPropagation();
-		event.preventDefault();
-	};
-	$codeImgBox[0].ondragenter = function (event) {
-		event.stopPropagation();
-		event.preventDefault();
-	};
-	$codeImgBox[0].ondragover = function (event) {
-		event.stopPropagation();
-		event.preventDefault();
-	};
-
-	$mainImgBox[0].ondrop = function (event) {
-		event.stopPropagation();
-		event.preventDefault();
-		var file = event.dataTransfer.files[0];
-		mainImgUpload(file);
-	};
-	$codeImgBox[0].ondrop = function (event) {
-		event.stopPropagation();
-		event.preventDefault();
-		var file = event.dataTransfer.files[0];
-		codeImgUpload(file);
-	};
+	// 拖拽上传图片事件
+	function BandDropEvent (el,fn) {
+        el.ondragenter = function (event) {   // 清除默认事件，防止浏览器直接打开图片文件
+            event.stopPropagation();
+            event.preventDefault();
+        };
+        el.ondragover = function (event) {
+            event.stopPropagation();
+            event.preventDefault();
+        };
+        el.ondrop = function (event) {
+            event.stopPropagation();
+            event.preventDefault();
+            var file = event.dataTransfer.files[0];
+            fn(file);
+        };
+	}
+	// 绑定主图及二维码上传事件
+    BandDropEvent($mainImgBox[0],mainImgUpload);
+    BandDropEvent($codeImgBox[0],codeImgUpload);
 
 	// 点击上传图片
 	$('.imgBox-btn').on('click',function (event) {  // 父盒子的点击事件传递给file input
@@ -73,10 +59,10 @@ $(function() {
 
 	// 图片上传事件
 	function mainImgUpload(file) {
-		wxXY = {
-			x: 200,
-			y: 200,
-			w: 200,
+		wxXY = {							// 默认参数
+			x: 0,
+			y: 0,
+			w: 0,
 			isDefault: 0
 		};
         $mainName.text(file.name);
@@ -87,6 +73,16 @@ $(function() {
 			getMainWH(event.target.result); // 获取海报的宽高后开始合成
 		};
 		reader.readAsDataURL(file);
+        // 返回海报图宽高
+        function getMainWH(src) {
+            var img = new Image;
+            img.src = src;
+            img.onload = function () {
+                mainWH.w = img.width;
+                mainWH.h = img.height;
+                compound(); // 启动合成
+            }
+        }
 	}
 	function codeImgUpload(file) {
 		$codeName.text(file.name);
@@ -94,19 +90,16 @@ $(function() {
 		var reader = new FileReader();
 		reader.onload = function (event) {
 			imgArr[1] = event.target.result;
-			if(imgArr[0] && imgArr[1]) {
-                compound();
-			}
+			compound();
 		};
 		reader.readAsDataURL(file);
 	}
 
-	// 二维码位置设置
-	switchToMode2();
+    // 下载按钮点击事件
+    $downloadBtn.on('click',download);
 
-	// 自由模式下二维码位置改变
-    function switchToMode2() {
-		automation = false;
+	// 手动拖放二维码位置改变
+	(function switchToMode2() {
 		var hasMove = false;
 		$finallyImg.on('mousedown', function (event) {
 			event.preventDefault();
@@ -133,71 +126,59 @@ $(function() {
 				}
 			};
 		});
-	}
+	}) ();
 
-	// 返回海报图宽高
-	function getMainWH(src) {
-		var img = new Image;
-		img.src = src;
-		img.onload = function () {
-			mainWH.w = img.width;
-			mainWH.h = img.height;
-			if(imgArr[0] && imgArr[1]){
-                compound(); // 启动合成
-			}
-		}
-	}
-
-	//生成画布
+	// 图片合成
 	function compound(){
+    	if (!imgArr[0] || !imgArr[1]) {
+    		return;
+		}
 		draw(function(){
 			$finalImgBox.show();
 			$finallyImg.html('<img src="'+imgBase64+'">');
-		})
-	}
-	function draw(fn) {
-		var c = document.createElement('canvas'),
-			ctx = c.getContext('2d');
+		});
+        function draw(fn) {
+            var c = document.createElement('canvas'),
+                ctx = c.getContext('2d');
 
-        c.width = mainWH.w;
-		c.height = mainWH.h;
-		var result = {};
+            c.width = mainWH.w;
+            c.height = mainWH.h;
+            var result = {};
 
-		function drawing(n) {
-			if (n < imgArr.length) {
-				var img = new Image;
-				img.src = imgArr[n];
-				img.onload = function() {
-					if (n==1) {
-                        if(wxXY.isDefault === 1){
-                        	wxXY = result;
-							console.log(1);
-						}
-						console.log(wxXY);
-						ctx.drawImage(img,wxXY.x,wxXY.y,wxXY.w,wxXY.w);
-						drawing(n+1);
-                        if(wxXY.isDefault === 0){
-                            layer.msg('拼图失败，请手动设定二维码位置！');
-						}else {
-                            layer.msg('拼图成功，点击【下载海报】即可下载！');
-						}
+            function drawing(n) {
+                if (n < imgArr.length) {
+                    var img = new Image;
+                    img.src = imgArr[n];
+                    img.onload = function() {
+                        if (n==1) {
+                            if(wxXY.isDefault === 1){
+                                wxXY = result;
+                            }
+                            ctx.drawImage(img,wxXY.x,wxXY.y,wxXY.w,wxXY.w);
+                            drawing(n+1);
+                            if(wxXY.isDefault === 0){
+                                layer.msg('拼图失败，请手动设定二维码位置！');
+                            }else {
+                                layer.msg('拼图成功，点击【下载海报】即可下载！');
+                            }
 
-					} else {
-						ctx.drawImage(img,0,0,img.width,img.height);
-						var data = ctx.getImageData(0, 0, img.width, img.height).data;
-						if(wxXY.isDefault === 0){
-							result = getCodeInfo(data,img.width,img.height);
+                        } else {
+                            ctx.drawImage(img,0,0,img.width,img.height);
+                            var data = ctx.getImageData(0, 0, img.width, img.height).data;
+                            if(wxXY.isDefault === 0){
+                                result = getCodeInfo(data,img.width,img.height);
 
-						}
-						drawing(n+1);
-					}
-				}
-			} else {
-				imgBase64 = c.toDataURL("image/jpeg",1);
-				fn();
-			}
-		}
-		drawing(0);
+                            }
+                            drawing(n+1);
+                        }
+                    }
+                } else {
+                    imgBase64 = c.toDataURL("image/jpeg",1);
+                    fn();
+                }
+            }
+            drawing(0);
+        }
 	}
 
     // 图片像素点处理
@@ -215,43 +196,35 @@ $(function() {
             }
         }
         return disposeColorRight(colorRight);
-    }
-
-    // 处理像素点数据
-	function disposeColorRight(obj) {
-		var rightObj = obj;
-        var len = 180;  // 白色线条的最小长度
-		var result = {};
-		for(var key in rightObj){
-			var arr = key.split('-');
-            var X = parseInt(arr[0]),
-                Y = parseInt(arr[1]),
-                times = 0,
-				i = 0;
-            function isRight() {
-				if(rightObj[(X + i) + '-' + Y] && rightObj[X+ '-' + (Y + i)]){
-					times ++;
-					i++;
-					isRight();
-				}else {
-					result = {
-						x: X,
-						y: Y,
-						w: times
-					};
-				}
-			}
-			isRight();
-
-            if(result.w > len){
-				wxXY.isDefault = 1;
-                return result;
+        // 处理像素点数据
+        function disposeColorRight(obj) {
+            var MINLEN = 180;  // 白色线条的最小长度
+            var result;
+            for(var value in obj){
+                if (!obj.hasOwnProperty(value)) {
+                    return;
+                }
+                var arr = value.split('-');
+                var X = parseInt(arr[0]),
+                    Y = parseInt(arr[1]),
+                    times = 0,
+                    i = 0;
+                while (obj[(X + i) + '-' + Y] && obj[X+ '-' + (Y + i)]) {
+                    times ++;
+                    i++;
+                }
+                result = {
+                    x: X,
+                    y: Y,
+                    w: times
+                };
+                if(result.w > MINLEN){
+                    wxXY.isDefault = 1;
+                    return result;
+                }
             }
-		}
+        }
     }
-
-	// 下载按钮点击事件
-	$downloadBtn.on('click',download);
 
 	// 下载图片事件
 	function download() {

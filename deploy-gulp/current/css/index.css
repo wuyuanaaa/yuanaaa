@@ -1,0 +1,11 @@
+.info {
+  display: block;
+  width: 100px;
+  height: 100px;
+  color: #333;
+  -webkit-transform: rotate(15deg);
+     -moz-transform: rotate(15deg);
+      -ms-transform: rotate(15deg);
+       -o-transform: rotate(15deg);
+          transform: rotate(15deg);
+}

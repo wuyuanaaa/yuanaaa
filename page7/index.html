@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>映课早报生成</title>
+    <link rel="shortcut icon" type="image/x-icon" href="//m.ykclass.com/zt/zyImages/ykclass/1532442868804.png">
+    <link rel="stylesheet" href="./css/index.css?v=6a5e34c8fa">
+</head>
+<body>
+<ul id="bubble_bg">
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+    <li class="bubble"></li>
+</ul>
+<div class="help">
+    <h2>映课早报生成</h2>
+</div>
+<hr>
+<div class="content">
+    <div class="img" id="toImg">
+        <div id="date" class="dateNum"></div>
+        <div class="img-top">
+
+        </div>
+        <div class="img-text">
+            <div class="img-text-content" contenteditable="true">正文内容 可以编辑
+                <br>回车换行
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;空格可用
+            </div>
+        </div>
+        <div class="img-bottom">
+
+        </div>
+        <div class="wx" id="wx">
+
+        </div>
+    </div>
+    <div id="hook-downLoad" class="img-box">
+    </div>
+    <div class="control">
+        <p>设置时间：<input id="dateNum" class="dateNum" type="date"></p>
+        <button id="download" class="download">下载图片</button>
+        <p class="p2">如果下载失败：
+            <br>1、右键点击下方图片
+            <br>2、图片另存为
+            <br>3、设置文件名××.jpg
+            <br>4、保存
+            <br><b>或者直接将下方图片长按拖放到桌面</b>
+        </p>
+    </div>
+</div>
+
+
+<div class="bottom">
+    <p class="p-created">Created by <a href="https://github.com/wuyuanaaa">yuanaaa</a></p>
+    <p class="p-info">有任何问题请钉钉联系吴远</p>
+</div>
+</body>
+<script src="//js.ykclass.com/frame/jquery/v2.1.4/jquery.min.js"></script>
+<script src="./js/html2canvas.min.js?v=c3e0166623"></script>
+<script src="./js/index.js?v=7f2a484843"></script>
+</html>

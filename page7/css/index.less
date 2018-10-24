@@ -1,0 +1,410 @@
+@charset "utf-8";
+// yuanaaa Less自定义
+.bgs() {
+  background-size: cover;
+}
+
+.bgsc() {
+  background-size: contain;
+}
+
+.pr() {
+  position: relative;
+}
+
+.pa() {
+  position: absolute;
+}
+
+.trs() {
+  transition: all 0.3s ease-in-out;
+}
+
+.bb() {
+  box-sizing: border-box;
+}
+
+// h5标签
+header, nav, article, section, aside, footer {
+  display: block;
+}
+
+// 通用
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, span, pre, abbr, address, cite, code, em, img, ins, q, strong, sub, sup, b, i, dl, dt, dd, ol, ul, li, form, label, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+  line-height: 1;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 48px;
+  color: #2D3349;
+}
+
+h4 {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 24px;
+  color: #333333;
+}
+
+p {
+  font-size: 16px;
+}
+
+span {
+  display: inline;
+  line-height: 1;
+}
+
+// body and html
+body, html {
+  margin: auto;
+  background: #fff;
+  line-height: 1;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+body, button, input, select, textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 14px
+}
+
+// 表单相关
+table {
+  border-collapse: collapse
+}
+
+input, select, textarea {
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='button'] {
+  cursor: pointer;
+}
+
+input::placeholder {
+  color: #ccc;
+}
+
+// img
+img {
+  border: none;
+  vertical-align: top;
+}
+
+// a标签
+a {
+  cursor: pointer;
+  color: #333;
+}
+
+// ol ul
+ol, ul, li {
+  list-style: none
+}
+
+// 清除浮动
+.clearfix:after, .clearfix:before {
+  content: "";
+  display: table
+}
+
+.clearfix:after {
+  clear: both
+}
+
+.clearfix {
+  *zoom: 1
+}
+
+// 按钮样式
+button {
+  display: block;
+  border: 0;
+  font-weight: bold;
+  box-sizing: border-box;
+  .trs();
+  cursor: pointer;
+}
+
+// ico
+i {
+  display: inline-block;
+}
+
+i[class^='icon'] {
+  .bgs();
+  .pa();
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #a6b6d2, #9fc3d4);
+}
+
+.help {
+  margin: 20px;
+  h2 {
+    font-weight: bold;
+    font-size: 22px;
+  }
+}
+
+.content {
+  .pr();
+}
+
+.img {
+  .pa();
+  left: 20px;
+  transform-origin: left top;
+  transform: scale(0.5);
+  width: 750px;
+  margin-bottom: 100px;
+
+  .dateNum {
+    .pa();
+    top: 83px;
+    right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+  }
+  .img-top,
+  .img-bottom {
+    width: 100%;
+  }
+  .img-top {
+    height: 200px;
+    background: url(../images/bg.jpg) no-repeat top;
+  }
+  .img-bottom {
+    height: 280px;
+    background: url(../images/bg.jpg) no-repeat bottom;
+  }
+  .img-text {
+    min-height: 1334-480px;
+    padding: 0 34px;
+    background: url(../images/bg-more.jpg) repeat-y;
+  }
+  .img-text-content {
+    .bb();
+    margin: 0 auto 0;
+    font-size: 30px;
+    line-height: 2;
+  }
+  .wx {
+    .pa();
+    bottom: 43px;
+    left: 36px;
+    width: 180px;
+    height: 180px;
+    background: #fff url(../images/wx.jpg);
+    background-size: contain;
+  }
+}
+
+.control {
+  position: fixed;
+  left: 420px;
+  top: 72px;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border: 1px dashed gold;
+  z-index: 50;
+  p {
+    font-size: 14px;
+  }
+  .dateNum {
+    background: transparent;
+    border: 1px solid #ccc;
+    width: 160px;
+    height: 30px;
+    padding-left: 20px;
+    color: #333;
+  }
+  .dateNum:focus {
+    outline: 1px solid #7be4d0;
+  }
+  .download {
+    width: 230px;
+    height: 40px;
+    border: 2px solid #ccc;
+    background: transparent;
+    margin: 20px 0 0;
+    .trs();
+  }
+  .download:hover {
+    background: #7be4d0;
+    color: #fff;
+    border: 0;
+  }
+  .p2 {
+    margin-top: 8px;
+  }
+}
+
+.img-box {
+  position: fixed;
+  left: 420px;
+  top: 310px;
+  & > img {
+    transform-origin: left top;
+    transform: scale(0.39);
+  }
+}
+
+.bottom {
+  position: fixed;
+  bottom: 10px;
+  left: 420px;
+  width: 100%;
+  p {
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 1.4;
+    color: #eee;
+    a {
+      color: #eee;
+    }
+  }
+  .p-info {
+    color: #333;
+    display: none;
+  }
+}
+
+.bottom:hover .p-info {
+  display: block;
+}
+
+#bubble_bg {
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  min-width: 1200px;
+  height: 100%;
+  list-style: none;
+  .bubble {
+    position: absolute;
+    bottom: -200px;
+    left: 2%;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.15);
+    animation: bubbleMove 27s linear infinite;
+  }
+  .bubble:nth-of-type(2) {
+    width: 60px;
+    height: 60px;
+    left: 12%;
+    animation-delay: 12s;
+    animation-duration: 24s;
+  }
+  .bubble:nth-of-type(3) {
+    width: 20px;
+    height: 20px;
+    left: 19%;
+    animation-delay: 5s;
+    animation-duration: 28s;
+  }
+  .bubble:nth-of-type(4) {
+    width: 80px;
+    height: 80px;
+    left: 25%;
+    animation-delay: 10s;
+    animation-duration: 25s;
+  }
+  .bubble:nth-of-type(5) {
+    width: 38px;
+    height: 38px;
+    left: 39%;
+    animation-delay: 18s;
+    animation-duration: 26s;
+  }
+  .bubble:nth-of-type(6) {
+    width: 14px;
+    height: 14px;
+    left: 42%;
+    animation-delay: 0s;
+    animation-duration: 25s;
+  }
+  .bubble:nth-of-type(7) {
+    width: 84px;
+    height: 84px;
+    left: 52%;
+    animation-delay: 8s;
+    animation-duration: 24s;
+  }
+  .bubble:nth-of-type(8) {
+    width: 34px;
+    height: 34px;
+    left: 64%;
+    animation-delay: 20s;
+    animation-duration: 38s;
+  }
+  .bubble:nth-of-type(9) {
+    width: 74px;
+    height: 74px;
+    left: 72%;
+    animation-delay: 10s;
+    animation-duration: 33s;
+  }
+  .bubble:nth-of-type(10) {
+    width: 26px;
+    height: 26px;
+    left: 84%;
+    animation-delay: 3s;
+    animation-duration: 28s;
+  }
+  .bubble:nth-of-type(11) {
+    width: 68px;
+    height: 68px;
+    left: 92%;
+    animation-delay: 19s;
+    animation-duration: 20s;
+  }
+}
+
+@keyframes bubbleMove {
+  0% {
+    transform: translateY(0) rotate(0) scale(1);
+  }
+  100% {
+    transform: translateY(-700px) rotate(-480deg) scale(2);
+  }
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 水波纹</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,body {
+            width: 100%;
+            height: 100%;
+        }
+        .box {
+            width: auto;
+            height: 1000px;
+            background: url(https://img.ykclass.com/dist/img/p/index-banner.png) no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            background-size:  auto 100%;
+        }
+        .wave-position {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+        }
+        .wave {
+            position: absolute;
+            top: 145px;
+            left: 145px;
+            width: 10px;
+            height: 10px;
+            border-radius: 300px;
+            background: url(https://img.ykclass.com/dist/img/p/index-banner.png);
+            background-attachment: fixed;
+            background-position: center center;
+            background-size: 100%;
+            opacity: 0;
+        }
+        .wave0 {
+            z-index: 2;
+            background-size: auto 105%;
+            animation: move 1s forwards;
+        }
+        .wave1 {
+            z-index: 3;
+            background-size: auto 102%;
+            animation: move 1.1s 0.2s forwards;
+        }
+        .wave2 {
+            z-index: 4;
+            background-size: auto 104%;
+            animation: move 1.2s 0.4s forwards;
+        }
+        .wave3 {
+            z-index: 5;
+            background-size: auto 101%;
+            animation: move 1.3s 0.5s forwards;
+        }
+        .wave4 {
+            z-index: 6;
+            background-size: auto 102%;
+            animation: move 1.4s 0.8s forwards;
+        }
+        .wave5 {
+            z-index: 7;
+            background-size: auto 100%;
+            animation: move 1.5s 0.9s forwards;
+        }
+
+        @keyframes move {
+            0% {
+                top: 145px;
+                left: 145px;
+                width: 10px;
+                height: 10px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                top: 0;
+                left: 0;
+                width: 300px;
+                height: 300px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+</body>
+</html>
+<script src="https://js.ykclass.com/frame/jquery/v2.1.4/jquery.min.js"></script>
+<script>
+	var mx, my, isRun = false;
+	var z = 2;
+	/*$('.box').on('mousemove', function (e) {
+		var event = e || window.event;
+		if(isRun){
+			return;
+        }
+        isRun = true;
+		setTimeout(function () {
+			isRun = false;
+            return creatWave(event);
+		},300)
+	});*/
+	$('.box').on('click',creatWave);
+
+	function creatWave(e) {
+		mx = e.pageX;
+		my = e.pageY;
+		z = z + 1;
+		wave(mx, my, z);
+	}
+
+	function wave(i, j, k) {
+		$('.box').append(
+			'<div class="wave-position water' + k + '" style="z-index:' + k + ';top:' + (j - 150) + 'px;left:' + (i - 150) + 'px;">' +
+			'<div class="wave wave5"></div>' +
+			'<div class="wave wave4"></div>' +
+			'<div class="wave wave3"></div>' +
+			'<div class="wave wave2"></div>' +
+			'<div class="wave wave1"></div>' +
+			'<div class="wave wave0"></div>' +
+			'</div>'
+		);
+		setTimeout(function () {
+			$('.water' + k).remove();  // 清除已经完成动画的元素
+		}, 3000);
+	}
+</script>

@@ -1,11 +1,11 @@
 # yuanaaa
 一个弱鸡的日常...
 
-## 【小练习】一个轮播demo
+### 【小练习】一个轮播demo
 ##### (此版为初始demo，bug较多，后续版本已整合进[yuanaaa.js](https://github.com/wuyuanaaa/yuanaaa.js))
  [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/slider)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/slider/index.html)
 
-## 【功能页面】海报二维码合成
+### 【功能页面】海报二维码合成
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/imgCompound)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/imgCompound/index.html)
 #### 主要功能
 + 根据两条垂直的白线定位二维码,并设置二维码宽度
@@ -13,7 +13,7 @@
 + 合成成功后实时预览
 + 一键下载合成后的图片
 
-## 【工具配置】静态页面切图gulp配置
+### 【工具配置】静态页面切图gulp配置
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/deploy-gulp)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/deploy-gulp/index.html)
 #### 主要功能
 + browser-sync--实现自动刷新、多端调试
@@ -53,7 +53,19 @@ gulp tp
 + 文本格式清除后所见即所得
 + 一键下载合成后的图片（火狐之外的浏览器下载大文件出错，增加手动下载支持）
 
-## 【小练习】固定背景实现CSS水波纹
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-background-attachment)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-background-attachment/index.html)
-#### 主要功能
-+ 主要利用多层叠加div的background-attachment、background-size、animation属性
+### 【小练习】
+#### css01-固定背景实现CSS水波纹
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css01/index.html)
++ 主要利用多层叠加div的background-attachment、background-size、animation属性          
+#### css02-CSS仿ios按钮
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css02)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css02/index.html)
++ 主要利用position、transition属性
+#### css03-CSS实现跟随鼠标方向进入动效导航
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css03)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css03/index.html)
++ 相邻选择器‘~’的妙用
+#### css04-CSS实现边框转动效果
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css04)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css04/index.html)
++ 主要利用background的linear-gradient径向渐变
+#### css05-CSS实现边框转动效果
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css05)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css05/index.html)
++ css02及css03的延伸

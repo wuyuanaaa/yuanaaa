@@ -55,17 +55,17 @@ gulp tp
 
 ### 【小练习】
 #### css01-固定背景实现CSS水波纹
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css01/index.html)
-+ 主要利用多层叠加div的background-attachment、background-size、animation属性          
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css-01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css-01/index.html)
++ 主要利用多层叠加div的background-attachment、background-size、animation属性
 #### css02-CSS仿ios按钮
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css02)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css02/index.html)
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css-02)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css-02/index.html)
 + 主要利用position、transition属性
 #### css03-CSS实现跟随鼠标方向进入动效导航
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css03)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css03/index.html)
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css-03)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css-03/index.html)
 + 相邻选择器‘~’的妙用
 #### css04-CSS实现边框转动效果
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css04)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css04/index.html)
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css-04)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css-04/index.html)
 + 主要利用background的linear-gradient径向渐变
 #### css05-CSS实现边框转动效果
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css05)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css05/index.html)
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css-05)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css-05/index.html)
 + css02及css03的延伸

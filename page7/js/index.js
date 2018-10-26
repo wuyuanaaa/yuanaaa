@@ -43,6 +43,12 @@ $(function () {
         obj.d = date.getDate();
         return obj;
     }
+
+    // 下载图片
+    $('#download').on('click', function () {
+        getBase64();
+    });
+
     function getBase64() {
         $shareContent.css({
             'transform': 'scale(1)'
@@ -52,12 +58,6 @@ $(function () {
             download();
         });
     }
-
-    // 下载图片
-    var $download = $('#download');
-    $download.on('click', function () {
-        getBase64();
-    });
 
     // 下载图片事件
     function download() {
@@ -75,11 +75,13 @@ $(function () {
 
             var link = document.createElement('a');
             data = data.replace('image/jpeg', 'image/octet-stream');
+
             link.href = data;
             link.download = filename;
-            var event = document.createEvent('MouseEvents');
-            event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-            link.dispatchEvent(event);
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function appendImg(data) {
@@ -87,6 +89,5 @@ $(function () {
             img.src = data;
             $('#hook-downLoad').html('').append(img);
         }
-
     }
-})
+});

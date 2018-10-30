@@ -4,6 +4,7 @@
 ### 【读书笔记】
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/ReadingNotes)
 + [《你不知道的javaScript》--类型](https://wuyuanaaa.github.io/yuanaaa/ReadingNotes/notes-01.md)
++ [Javascript偏函数与柯里化](https://wuyuanaaa.github.io/yuanaaa/ReadingNotes/notes-02.md)
 
 ### 【工具配置】静态页面切图gulp配置
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/deploy-gulp)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/deploy-gulp/index.html)

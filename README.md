@@ -1,10 +1,11 @@
 # yuanaaa
 > 一个弱鸡的日常...
 
-### 【读书笔记】
+### 【阅读笔记】
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/ReadingNotes)
 + [《你不知道的javaScript》--类型](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-01.md)
 + [Javascript偏函数与柯里化](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-02.md)
++ [CSS三栏布局](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-03.md)
 
 ### 【工具配置】静态页面切图gulp配置
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/deploy-gulp)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/deploy-gulp/index.html)

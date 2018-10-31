@@ -1,13 +1,20 @@
 # yuanaaa
 > 一个弱鸡的日常...
 
+---
+
 ### 【阅读笔记】
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/ReadingNotes)
 + [《你不知道的javaScript》--类型](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-01.md)
 + [Javascript偏函数与柯里化](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-02.md)
 + [CSS三栏布局](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-03.md)
 
+---
+
 ### 【工具配置】静态页面切图gulp配置
+
+> 一套自用的便于静态页面切图的gulp配置，因为公司页面经常改动，没有添加压缩等功能
+
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/deploy-gulp)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/deploy-gulp/index.html)
 #### 主要功能
 + 【browser-sync】--自动刷新、多端调试
@@ -40,7 +47,12 @@ gulp tp
 - 1、因为gulp-rev gulp-rev-collector进行了部分修改，所以gulp-rev建议版本为@8.0.0，gulp-rev-collector建议版本为@1.1.1，修改过程参考自[此处](https://www.cnblogs.com/lakeInHeart/p/7257443.html)
 - 2、如需修改目录结构需对应修改gulpfile.js文件内容
 
+---
+
 ### 【功能页面】海报二维码合成
+
+> 公司经常需要一张海报放不同的销售人员的二维码，而大部分销售并不会使用PS等工具，由设计一张张更换又太费时间，所以写了这样的一个功能页面
+
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/imgCompound)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/imgCompound/index.html)
 #### 主要功能
 + 根据两条垂直的白线定位二维码,并设置二维码宽度
@@ -48,13 +60,20 @@ gulp tp
 + 合成成功后实时预览
 + 一键下载合成后的图片
 
+---
+
 ### 【功能页面】早报图片生成
+
+> 方便每天固定的朋友圈图片生成，样式固定，内容可自由编辑
+
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/page7) [页面预览](https://wuyuanaaa.github.io/yuanaaa/page7/index.html)
 #### 主要功能
 + 文本框及背景自动适应高度（默认有最小高度）
 + 文本框失焦后清除除去加粗、换行、空格外的格式，保证文字统一协调
 + 文本格式清除后所见即所得
 + 一键下载合成后的图片（火狐之外的浏览器下载大文件出错，增加手动下载支持）
+
+---
 
 ### 【小练习】
 #### css01-固定背景实现CSS水波纹
@@ -77,6 +96,10 @@ gulp tp
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/css-demo/css-05)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/css-demo/css-05/index.html)
 + css02及css03的延伸
 
+---
+
 ### 【小练习】一个轮播demo
-##### (此版为初始demo，bug较多，后续版本已整合进[yuanaaa.js](https://github.com/wuyuanaaa/yuanaaa.js))
+
+> (此版为初始demo，bug较多，后续版本已整合进[yuanaaa.js](https://github.com/wuyuanaaa/yuanaaa.js))
+
  [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/slider)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/slider/index.html)

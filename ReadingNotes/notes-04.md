@@ -61,4 +61,6 @@ function bandDropEvent (el,fn) {
 ```
 [这里是一个demo](https://wuyuanaaa.github.io/yuanaaa/demo/07/index.html)
 
+待续。。。
+
 

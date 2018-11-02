@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .dropBox {
+            width: 300px;
+            height: 300px;
+            margin: 20px;
+            padding: 10px;
+            border: 1px dashed #000;
+            background: #ddd;
+        }
+        .dropBox .info {
+            font-size: 16px;
+            line-height: 30px;
+            color: #333;
+        }
+        .dropBox .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="dropBox" id="dropHere">
+    <p class="info">把文件拖放到这里</p>
+    <p class="info hide">你上传的文件是：<span id="fileName"></span></p>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        const dropBox = document.querySelector('#dropHere');
+
+        // 绑定事件
+        bandDropEvent(dropBox, showFileName);
+        // 显示文件名称
+        function showFileName(file) {
+            const fileName = document.querySelector('#fileName');
+            fileName.innerText = file.name;
+            fileName.parentNode.style.display = 'block';
+        }
+        // 拖拽上传事件
+        function bandDropEvent (el,fn) {
+            el.ondragenter = function (event) {   // 清除默认事件，防止浏览器直接打开图片文件
+                event.stopPropagation();
+                event.preventDefault();
+            };
+            el.ondragover = function (event) {   // 清除默认事件，防止浏览器直接打开图片文件
+                event.stopPropagation();
+                event.preventDefault();
+            };
+            el.ondrop = function (event) {
+                event.stopPropagation();
+                event.preventDefault();
+                var file = event.dataTransfer.files[0];
+                fn(file);
+            };
+        }
+    })
+</script>

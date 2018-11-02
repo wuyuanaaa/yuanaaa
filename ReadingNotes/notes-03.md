@@ -2,7 +2,7 @@
 
 > 三种两边定宽，中间自适应的布局方式
 
-[demo](https://wuyuanaaa.github.io/yuanaaa/css-demo/css-06/index.html)
+[demo](https://wuyuanaaa.github.io/yuanaaa/demo/06/index.html)
 ---
 
 ### 圣杯布局

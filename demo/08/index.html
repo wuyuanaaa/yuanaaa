@@ -36,6 +36,8 @@
     <p class="info hide">你上传的文件是：<span id="fileName"></span></p>
     <input type="file" class="file-input" id="fileInput">
 </div>
+
+<img src="" alt="">
 </body>
 </html>
 <script>
@@ -43,7 +45,12 @@
         const dropBox = document.querySelector('#dropHere');
         const fileInput = document.querySelector('#fileInput');
         // 绑定事件
-        bandDropEvent(dropBox, showFileName);
+        bandDropEvent(dropBox, function (file) {
+            showFileName(file);
+            file2url(file, function (src) {
+                document.querySelectorAll('img')[0].src = src;
+            })
+        });
         dropBox.addEventListener('click', function (e) {
             e = e || window.event;
             e.stopPropagation();
@@ -51,6 +58,9 @@
         });
         fileInput.addEventListener('change', function () {
             showFileName(this.files[0]);
+            file2url(this.files[0], function (src) {
+                document.querySelectorAll('img')[0].src = src;
+            })
         });
 
         // 显示文件名称
@@ -75,5 +85,15 @@
                 fn(event.dataTransfer.files[0]);
             };
         }
+
+        function file2url(file, fn) {
+            const reader = new FileReader();
+            reader.addEventListener('load', function () {
+                const src = reader.result;
+                fn(src);
+            }, false);
+            reader.readAsDataURL(file);
+        }
+
     }
 </script>

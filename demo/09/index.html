@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .dropBox {
+            width: 300px;
+            height: 300px;
+            margin: 20px;
+            padding: 10px;
+            border: 1px dashed #000;
+            background: #ddd;
+        }
+        .dropBox .info {
+            font-size: 16px;
+            line-height: 30px;
+            color: #333;
+        }
+        .dropBox .hide {
+            display: none;
+        }
+        .dropBox .file-input {
+            /*opacity: 0;*/
+            display: none;
+        }
+        .showImg,
+        .showNewImg {
+            margin: 20px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="dropBox" id="dropHere">
+    <p class="info">点击此处<br>或把文件拖放到这里</p>
+    <p class="info hide">你上传的文件是：<span id="fileName"></span></p>
+    <input type="file" class="file-input" id="fileInput">
+</div>
+
+<img class="showImg" src="" alt="">
+<img class="showNewImg" src="" alt="">
+</body>
+</html>
+<script>
+    window.onload = function () {
+        const dropBox = document.querySelector('#dropHere');
+        const fileInput = document.querySelector('#fileInput');
+        // 绑定事件
+        bandDropEvent(dropBox, function (file) {
+            showFileName(file);
+            file2url(file, src2Dom)
+        });
+        dropBox.addEventListener('click', function (e) {
+            e = e || window.event;
+            e.stopPropagation();
+            this.querySelector('#fileInput').click();
+        });
+        fileInput.addEventListener('change', function () {
+            showFileName(this.files[0]);
+            file2url(this.files[0], src2Dom)
+        });
+        // 将图片反色
+        function inverse(src, fn) {
+            const img = new Image,
+                canvas = document.createElement('canvas'),
+                ctx = canvas.getContext('2d');
+            let w,h,data;
+            img.src = src;
+            const imgLoad = new Promise(function (resolve, reject) {
+                img.onload = function () {
+                    w = this.width;
+                    h = this.height;
+                    canvas.width = w;
+                    canvas.height = h;
+                    ctx.drawImage(this, 0, 0, w, h);
+                    data = ctx.getImageData(0, 0, w, h);
+                    const obj = {
+                        data: data,
+                        width: w,
+                        height: h
+                    };
+                    resolve(obj);
+                };
+            });
+            // 改变图片像素
+            function changeImageData(val) {
+                let imgData = val.data.data;
+                let w = val.width;
+                let h = val.height;
+                for(let i = 0; i < h; i++) {
+                    for(let j = 0; j < w; j++) {
+                        let x = i * 4 * w + 4 * j;
+                        imgData[x] = 255 - imgData[x];
+                        imgData[x + 1] = 255 - imgData[x + 1];
+                        imgData[x + 2] = 255 - imgData[x + 2];
+                    }
+                }
+                ctx.putImageData(data, 0, 0);
+                fn(canvas.toDataURL("image/jpeg", 1));
+            }
+            imgLoad.then(changeImageData);
+        }
+
+
+        // 对src处理
+        function src2Dom(src) {
+            document.querySelector('.showImg').src = src;
+            inverse(src, function (url) {
+                document.querySelector('.showNewImg').src = url;
+            });
+        }
+
+        // 文件转换为url字符
+        function file2url(file, fn) {
+            const reader = new FileReader();
+            reader.addEventListener('load', function () {
+                const src = reader.result;
+                fn(src);
+            }, false);
+            reader.readAsDataURL(file);
+        }
+        // 显示文件名称
+        function showFileName(file) {
+            const fileName = document.querySelector('#fileName');
+            fileName.innerText = file.name;
+            fileName.parentNode.style.display = 'block';
+        }
+        // 拖拽上传事件
+        function bandDropEvent (el,fn) {
+            el.ondragenter = function (event) {   // 清除默认事件，防止浏览器直接打开图片文件
+                event.stopPropagation();
+                event.preventDefault();
+            };
+            el.ondragover = function (event) {   // 清除默认事件，防止浏览器直接打开图片文件
+                event.stopPropagation();
+                event.preventDefault();
+            };
+            el.ondrop = function (event) {
+                event.stopPropagation();
+                event.preventDefault();
+                fn(event.dataTransfer.files[0]);
+            };
+        }
+    }
+</script>

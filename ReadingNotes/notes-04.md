@@ -102,7 +102,7 @@ fileInput.addEventListener('change', function () {
 
 > 属性PS的肯定知道，在位图里整张图片由N多的像素点组成，每一个小的像素点可以想象成一个小的色块，N多色块拼接在一起就成了我们最终看到的图片，如果能操作每个像素点的色值，就能够对图片进行编辑了，我们开始吧：
 
-__首先还是~~一个~~几个API：__
+__首先还是~~一个~~几个API：__(一个个介绍有点长，请自行点击链接去查看相关信息)
 
 - 1、[CanvasRenderingContext2D.drawImage()](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage)：在canvas上绘制目标图片
 
@@ -110,5 +110,81 @@ __首先还是~~一个~~几个API：__
 
 - 3、[CanvasRenderingContext2D.putImageData()](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/putImageData)：将已有的图片数据绘制到canvas
 
-代码有点长，直接看demo吧，[点击这里查看](https://wuyuanaaa.github.io/yuanaaa/demo/09/index.html)
+试着用这几个API实现了将图片的像素点反色，主要代码如下，由于文件的操作是异步进行的，此处用了最近才学习的Promise，将就看下；
+```
+// 将图片反色
+function inverse(src) {
+    const img = new Image,
+        canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+    let w,h,data;
+    img.src = src;
+    const imgLoad = new Promise((resolve, reject) => {
+        img.onload = function () {
+            w = this.width;
+            h = this.height;
+            canvas.width = w;
+            canvas.height = h;
+            ctx.drawImage(this, 0, 0, w, h);
+            data = ctx.getImageData(0, 0, w, h);
+            const obj = {
+                data: data,
+                width: w,
+                height: h
+            };
+            resolve(obj);
+        };
+    });
+    // 改变图片像素
+    imgLoad.then((val) => {
+        return new Promise((resolve, reject) => {
+            let imgData = val.data.data;
+            let w = val.width;
+            let h = val.height;
+            for(let i = 0; i < h; i++) {
+                for(let j = 0; j < w; j++) {
+                    let x = i * 4 * w + 4 * j;
+                    imgData[x] = 255 - imgData[x];
+                    imgData[x + 1] = 255 - imgData[x + 1];
+                    imgData[x + 2] = 255 - imgData[x + 2];
+                }
+            }
+            ctx.putImageData(data, 0, 0);
+            resolve(canvas.toDataURL("image/jpeg", 1));
+        });
+    }).then(function (url) {
+        document.querySelector('.showNewImg').src = url;
+    });
+}
+```
 
+完整demo，[点击这里查看](https://wuyuanaaa.github.io/yuanaaa/demo/09/index.html)。
+
+---
+
+### 编辑后的图片文件下载
+
+> 下载的实现用到a标签的download属性；
+
+主要代码如下：
+
+```
+function download(url, fileName) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = fileName;
+    link.click();
+}
+```
+
+增加下载功能的demo，[点击这里查看](https://wuyuanaaa.github.io/yuanaaa/demo/10/index.html)。
+
+### 总结
+
+- 图片的操作还能实现很多其他的效果，这里贴一个之前写的[二维码图片合成页面](https://wuyuanaaa.github.io/yuanaaa/imgCompound/index.html)，当初写这个页面花费了好长时间查找资料等，本篇内容出自该页面的梳理；
+
+- 接下来还会继续整理，dom转换图片，.html文件编辑等其他文件相关操作；
+
+- 源码都在链接里的github里，或者[直接点这里](https://github.com/wuyuanaaa/yuanaaa)；
+
+- __PS：本篇主要对图片的操作做了个简单的总结，代码的实现并没有考虑兼容等（最喜欢写demo这种无拘无束放飞自我的感觉），限于作者能力有限，相关代码仅作示范，如有不足，烦请告知，谢谢__

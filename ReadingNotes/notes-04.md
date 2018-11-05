@@ -57,7 +57,7 @@ function bandDropEvent (el,fn) {
 ```
 __更好的做法是在div里再放一个type='file'的input，然后绑定点击div事件触发input的点击事件，这样就可以同时支持点击及拖放上传__
 
-[这里是一个demo](https://wuyuanaaa.github.io/yuanaaa/demo/07/index.html)
+[这里是一个demo](https://wuyuanaaa.github.io/yuanaaa/demo/07/index01.html)
 
 ---
 
@@ -96,7 +96,7 @@ fileInput.addEventListener('change', function () {
     })
 });
 ```
-稍微修改一下上一步的demo，让它实现图片预览的功能，[点击这里查看](https://wuyuanaaa.github.io/yuanaaa/demo/08/index.html)
+稍微修改一下上一步的demo，让它实现图片预览的功能，[点击这里查看](https://wuyuanaaa.github.io/yuanaaa/demo/07/index02.html)
 
 #### 二、图片文件的编辑
 
@@ -158,7 +158,7 @@ function inverse(src) {
 }
 ```
 
-完整demo，[点击这里查看](https://wuyuanaaa.github.io/yuanaaa/demo/09/index.html)。
+完整demo，[点击这里查看](https://wuyuanaaa.github.io/yuanaaa/demo/07/index03.html)。
 
 ---
 
@@ -177,7 +177,7 @@ function download(url, fileName) {
 }
 ```
 
-增加下载功能的demo，[点击这里查看](https://wuyuanaaa.github.io/yuanaaa/demo/10/index.html)。
+增加下载功能的demo，[点击这里查看](https://wuyuanaaa.github.io/yuanaaa/demo/07/index04.html)。
 
 ### 总结
 

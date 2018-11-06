@@ -100,7 +100,7 @@ fileInput.addEventListener('change', function () {
 
 #### 二、图片文件的编辑
 
-> 属性PS的肯定知道，在位图里整张图片由N多的像素点组成，每一个小的像素点可以想象成一个小的色块，N多色块拼接在一起就成了我们最终看到的图片，如果能操作每个像素点的色值，就能够对图片进行编辑了，我们开始吧：
+> 熟悉PS的肯定知道，在位图里整张图片由N多的像素点组成，每一个小的像素点可以想象成一个小的色块，N多色块拼接在一起就成了我们最终看到的图片，如果能操作每个像素点的色值，就能够对图片进行编辑了，我们开始吧：
 
 __首先还是~~一个~~几个API：__(一个个介绍有点长，请自行点击链接去查看相关信息)
 
@@ -110,7 +110,7 @@ __首先还是~~一个~~几个API：__(一个个介绍有点长，请自行点�
 
 - 3、[CanvasRenderingContext2D.putImageData()](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/putImageData)：将已有的图片数据绘制到canvas
 
-试着用这几个API实现了将图片的像素点反色，主要代码如下，由于文件的操作是异步进行的，此处用了最近才学习的Promise，将就看下；
+试着用这几个API实现了将图片的像素点反色，主要代码如下：
 ```
 // 将图片反色
 function inverse(src) {
@@ -141,7 +141,7 @@ function inverse(src) {
             let imgData = val.data.data;
             let w = val.width;
             let h = val.height;
-            for(let i = 0; i < h; i++) {
+            for(let i = 0; i < h; i++) {        // 遍历像素点
                 for(let j = 0; j < w; j++) {
                     let x = i * 4 * w + 4 * j;
                     imgData[x] = 255 - imgData[x];
@@ -157,8 +157,12 @@ function inverse(src) {
     });
 }
 ```
+__需要注意的地方__
+- 文件的操作是异步进行的，此处用了Promise；
+- 对像素点的处理用到了嵌套的循环，外层循环X轴，内层循环Y轴上与之交叉的像素点，每一个像素点由4个数据表示，分别对应RGBA；
+> 因此第一个下标（对应R）值为：X轴序号 * 数据基数 *  图片宽度，每条X轴上的像素点数 + 数据基数 * Y轴序号
 
-完整demo，[点击这里查看](https://wuyuanaaa.github.io/yuanaaa/demo/07/index03.html)。
+将图片反色的demo，[点击这里查看](https://wuyuanaaa.github.io/yuanaaa/demo/07/index03.html)。
 
 ---
 

@@ -15,7 +15,7 @@
 
 > 一套自用的便于静态页面切图的gulp配置，因为公司页面经常改动，没有添加压缩等功能
 
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/deploy-gulp)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/deploy-gulp/index.html)
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/gulpDeploy)
 #### 主要功能
 + 【browser-sync】--自动刷新、多端调试
 + 【gulp-less】--less编译
@@ -66,7 +66,7 @@ gulp tp
 
 > 方便每天固定的朋友圈图片生成，样式固定，内容可自由编辑
 
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/page7) [页面预览](https://wuyuanaaa.github.io/yuanaaa/page7/index.html)
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/poster) [页面预览](https://wuyuanaaa.github.io/yuanaaa/poster/index.html)
 #### 主要功能
 + 文本框及背景自动适应高度（默认有最小高度）
 + 文本框失焦后清除除去加粗、换行、空格外的格式，保证文字统一协调

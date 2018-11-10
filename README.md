@@ -2,6 +2,16 @@
 
 ---
 
+### 【js练习】面对对象版轮播组件
+
+> - 非常感谢慕课网的[《星级评分原理和实现》](https://www.imooc.com/learn/842)课程，名字看起来很基础，但是讲的东西超级实用
+> - 最近一直觉得自己的代码没有逻辑，且维护、复用、拓展都很复杂，看了很多面对对象的理论，具体下手写起来又不知道怎么办╮(￣▽￣")╭
+> - 这是通过课程学习后实现的第一版，后续会持续更新（最终目的要实现yuanaaa.js更新面对对象的3.0版本）
+
+ [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/slider-new)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/slider-new/index.html)
+
+---
+
 ### 【阅读笔记】
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/ReadingNotes)
 + [《你不知道的javaScript》--类型](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-01.md)
@@ -75,7 +85,7 @@ gulp tp
 
 ---
 
-### 【小练习】
+### 【css练习】
 #### css01-固定背景实现CSS水波纹
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/01/index.html)
 + 主要利用多层叠加div的background-attachment、background-size、animation属性
@@ -98,7 +108,7 @@ gulp tp
 
 ---
 
-### 【小练习】一个轮播demo
+### 【js练习】一个轮播demo
 
 > (此版为初始demo，bug较多，后续版本已整合进[yuanaaa.js](https://github.com/wuyuanaaa/yuanaaa.js))
 

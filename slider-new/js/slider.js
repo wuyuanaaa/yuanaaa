@@ -1,6 +1,7 @@
 var carousel = (function () {
     // 默认参数
     var defaults = {
+        mode: 'move',
         runTime: 800,
         intervalTime: 4000,
         mainListEl: '.carousel-main',
@@ -12,6 +13,15 @@ var carousel = (function () {
         minMove: 70
     };
 
+    // 继承
+    function _extend(subClass, superClass) {
+        var F = function () {};
+        F.prototype = superClass.prototype;
+        subClass.prototype = new F();
+        subClass.prototype.constructor = subClass;
+    }
+
+    // 父类
     var Carousel = function (el, options) {
         this.$el = $(el);
         this.current = 0;           // 初始选中第0项
@@ -23,19 +33,13 @@ var carousel = (function () {
         this.max = this.$mainLists.length - 1;
     };
 
-    // 初始化一个轮播
-    Carousel.prototype.init = function () {
-        this.initialize();
-        this.bindEvent();
-    };
-
     // 初始化轮播dom
     Carousel.prototype.initialize = function () {
-        this.$mainLists.eq(this.current).css('left', '0px').siblings().css('left', -this.width + 'px');
+        throw new Error('子类需要重写此方法');
     };
 
     // 右边进入动画
-    Carousel.prototype.moveToNext = function(num) {
+    Carousel.prototype.toNext = function(num) {
         this.$mainLists.eq(num).css('left', this.width + 'px');
         this.$mainLists.eq(this.current).stop().animate({left: -this.width + 'px'}, this.opts.runTime, 'swing');
         this.$mainLists.eq(num).stop().animate({left: '0px'}, this.opts.runTime, 'swing');
@@ -43,7 +47,7 @@ var carousel = (function () {
     };
 
     // 左边进入动画
-    Carousel.prototype.moveToPrev = function(num) {
+    Carousel.prototype.toPrev = function(num) {
         this.$mainLists.eq(num).css('left', -this.width + 'px');
         this.$mainLists.eq(this.current).stop().animate({left: this.width + 'px'}, this.opts.runTime, 'swing');
         this.$mainLists.eq(num).stop().animate({left: '0px'}, this.opts.runTime, 'swing');
@@ -57,10 +61,10 @@ var carousel = (function () {
         }
         if (num > this.current) {
             num = num > this.max ? 0 : num;
-            this.moveToNext(num);
+            this.toNext(num);
         } else {
             num = num < 0 ? this.max : num;
-            this.moveToPrev(num);
+            this.toPrev(num);
         }
         this.current = num;
         this.$paginationLists && this.$paginationLists.eq(this.current).addClass('active').siblings().removeClass('active');
@@ -182,11 +186,78 @@ var carousel = (function () {
         }
     };
 
+    // 初始化一个轮播
+    Carousel.prototype.init = function () {
+        this.initialize();
+        this.bindEvent();
+    };
+
+
+
+    // 移动模式
+    var CarouselMove = function (el, options) {
+        Carousel.call(this, el, options);
+    };
+
+    // 继承父类
+    _extend(CarouselMove, Carousel);
+
+    // 初始化轮播dom
+    CarouselMove.prototype.initialize = function () {
+        this.$mainLists.eq(this.current).css('left', '0px').siblings().css('left', -this.width + 'px');
+    };
+
+    // 右边进入动画
+    CarouselMove.prototype.toNext = function(num) {
+        this.$mainLists.eq(num).css('left', this.width + 'px');
+        this.$mainLists.eq(this.current).stop().animate({left: -this.width + 'px'}, this.opts.runTime, 'swing');
+        this.$mainLists.eq(num).stop().animate({left: '0px'}, this.opts.runTime, 'swing');
+        return this.moveEedFn && this.moveEedFn();
+    };
+
+    // 左边进入动画
+    CarouselMove.prototype.toPrev = function(num) {
+        this.$mainLists.eq(num).css('left', -this.width + 'px');
+        this.$mainLists.eq(this.current).stop().animate({left: this.width + 'px'}, this.opts.runTime, 'swing');
+        this.$mainLists.eq(num).stop().animate({left: '0px'}, this.opts.runTime, 'swing');
+        return this.moveEedFn && this.moveEedFn();
+    };
+
+
+
+
+    // 淡出淡入模式
+    var CarouselFade = function (el, options) {
+        Carousel.call(this, el, options);
+    };
+
+    // 继承父类
+    _extend(CarouselFade, Carousel);
+
+    // 初始化轮播dom
+    CarouselFade.prototype.initialize = function () {
+        this.$mainLists.eq(this.current).show().siblings().hide();
+    };
+
+    // 右边进入动画
+    CarouselFade.prototype.toNext = function(num) {
+
+        this.$mainLists.eq(num).stop().fadeIn(this.opts.runTime).siblings().fadeOut(this.opts.runTime);
+
+        return this.moveEedFn && this.moveEedFn();
+    };
+    CarouselFade.prototype.toPrev = CarouselFade.prototype.toNext;
+
+
 
     // 初始化
     var init = function (el, options) {
         options = $.extend({}, defaults, options);
-        new Carousel(el, options).init();
+        if (options.mode === 'fade') {
+            new CarouselFade(el, options).init();
+        } else {
+            new CarouselMove(el, options).init();
+        }
     };
 
     return {

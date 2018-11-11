@@ -10,6 +10,9 @@
 
  [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/slider-new)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/slider-new/index.html)
 
+ - 08.11.10：实现初始版本；
+ - 08.11.11：新增父类继承，添加淡出淡入新模式
+
 ---
 
 ### 【阅读笔记】

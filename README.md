@@ -12,6 +12,7 @@
 
  - 08.11.10：实现初始版本；
  - 08.11.11：新增父类继承，添加淡出淡入新模式
+ - 08.11.15：已经更新至[yuanaaa.js的3.0版](https://github.com/wuyuanaaa/yuanaaa.js/tree/master/3.0)，此版demo不再更新
 
 ---
 

@@ -2,6 +2,18 @@
 
 ---
 
+### 【Polyfill】JS的兼容整理
+
+> 之前一直在回避兼容问题，大部分代码都是依赖jquery，决定开始正视原生写法，暂时分成了两类
+> - 【补充类】：对没有该功能的版本进行补充
+> - 【兼容类】：对实现方式不一致进行兼容
+> - 持续更新
+
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/Polyfill/polyfill.js)
+
+
+---
+
 ### 【js练习】面对对象版轮播组件
 
 > - 非常感谢慕课网的[《星级评分原理和实现》](https://www.imooc.com/learn/842)课程，名字看起来很基础，但是讲的东西超级实用

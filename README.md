@@ -2,6 +2,25 @@
 
 ---
 
+### 【js练习】面对对象版气泡背景生成
+
+> 实现添加气泡背景
+
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/bubble)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/bubble/index.html)
+
+#### 使用说明
+
+- 动画由CSS3实现，需添加CSS样式（见demo）
+- 默认调用如下
+
+```
+bobbles.init(num, options);      // num 表示气泡数量      options 表示参数对象
+```
+
+- 可修改默认参数包含：宽度范围 动画延迟范围 动画速度（见demo）
+
+---
+
 ### 【Polyfill】JS的兼容整理
 
 > 之前一直在回避兼容问题，大部分代码都是依赖jquery，决定开始正视原生写法，暂时分成了两类

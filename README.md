@@ -2,6 +2,15 @@
 
 ---
 
+### 【阅读笔记】
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/ReadingNotes)
++ [《你不知道的javaScript》--类型](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-01.md) _--2018.10.27_
++ [Javascript偏函数与柯里化](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-02.md) _--2018.11.19_
++ [CSS三栏布局](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-03.md) _--2018.11.03_
++ [js文件操作总结一：图片篇](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-04.md) _--2018.11.06_
++ [js二叉树整理](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-05.md) _--2018.11.28_
+---
+
 ### 【js练习】面对对象版气泡背景生成
 
 > 实现添加气泡背景
@@ -44,15 +53,6 @@ bobbles.init(num, options);      // num 表示气泡数量      options 表示�
  - 08.11.10：实现初始版本；
  - 08.11.11：新增父类继承，添加淡出淡入新模式
  - 08.11.15：已经更新至[yuanaaa.js的3.0版](https://github.com/wuyuanaaa/yuanaaa.js/tree/master/3.0)，此版demo不再更新
-
----
-
-### 【阅读笔记】
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/ReadingNotes)
-+ [《你不知道的javaScript》--类型](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-01.md)
-+ [Javascript偏函数与柯里化](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-02.md)
-+ [CSS三栏布局](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-03.md)
-+ [js文件操作总结一：图片篇](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-04.md)
 
 ---
 

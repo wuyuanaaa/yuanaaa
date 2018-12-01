@@ -6,14 +6,14 @@
 
 ---
 
-## 构建二叉排序树
+## 一、构建二叉排序树
 
 > 根据数组构建二叉排序树：
 > - 若左子树不空，则左子树上所有结点的值均小于它的根结点的值；
 > - 若右子树不空，则右子树上所有结点的值均大于它的根结点的值；
 > - 左、右子树也分别为二叉排序树；
 
-### 一、构造函数
+### 1.1 构造函数
 
 ```
 function BinaryTree() {
@@ -65,7 +65,7 @@ nodes.forEach(key => binaryTree.insert(key));
 console.log(binaryTree.root);
 ```
 
-### 二、二叉排序树的遍历
+### 1.2 二叉排序树的遍历
 
 - __前序遍历（DLR）__：首先访问根结点，然后遍历左子树，最后遍历右子树。简记根-左-右。
 
@@ -105,11 +105,11 @@ function postOrder(node, callback) {
 }
 ```
 
-### 三、二叉树的其他方法
+## 二、二叉树的其他方法
 
 > 以下整理自领扣的习题
 
-- __二叉树的最大深度__：每棵树的深度等于左右子树的深度最大值 + 1，递归获得整棵树的最大深度。
+### 2.1 __二叉树的最大深度__：每棵树的深度等于左右子树的深度最大值 + 1，递归获得整棵树的最大深度。
 
 ```
 var maxDepth = function(root) {
@@ -125,7 +125,7 @@ var maxDepth = function(root) {
 };
 ```
 
-- __翻转二叉树__：将二叉树的每个节点的左右节点互换
+### 2.2 __翻转二叉树__：将二叉树的每个节点的左右节点互换
 
 ```
 var invertTree = function(root) {
@@ -142,7 +142,7 @@ var invertTree = function(root) {
 };
 ```
 
-- __合并二叉树__：给定两个二叉树，如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NULL 的节点将直接作为新二叉树的节点。
+### 2.3 __合并二叉树__：给定两个二叉树，如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NULL 的节点将直接作为新二叉树的节点。
 
 ```
 var mergeTrees = function(t1, t2) {
@@ -158,7 +158,7 @@ var mergeTrees = function(t1, t2) {
 }
 ```
 
-- __二叉搜索树中的搜索__：给定二叉搜索树（BST）的根节点和一个值。 你需要在BST中找到节点值等于给定值的节点。 返回以该节点为根的子树。 如果节点不存在，则返回 NULL。
+### 2.4 __二叉搜索树中的搜索__：给定二叉搜索树（BST）的根节点和一个值。 你需要在BST中找到节点值等于给定值的节点。 返回以该节点为根的子树。 如果节点不存在，则返回 NULL。
 
 ```
 var searchBST = function(root, val) {
@@ -172,7 +172,7 @@ var searchBST = function(root, val) {
 };
 ```
 
-- __平衡二叉树__：给定一个二叉树，判断它是否每个节点的左右两个子树的高度差的绝对值不超过1。
+### 2.5 __平衡二叉树__：给定一个二叉树，判断它是否每个节点的左右两个子树的高度差的绝对值不超过1。
 
 ```
 var isBalanced = function(root) {
@@ -197,3 +197,61 @@ var isBalanced = function(root) {
 };
 ```
 
+### 2.6 __二叉树的层次遍历__：给定一个二叉树，返回其节点值自底向上的层次遍历。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历）。
+
+```
+var levelOrderBottom = function(root) {
+    if (root === null) {
+        return [];
+    }
+
+    let result = [],
+        nodeList = [root];
+
+    order(nodeList);
+
+    function order(nodeList) {
+        let arr = [],
+            nextList = [];
+        while (nodeList.length > 0) {
+            let node = nodeList.shift();
+            arr.push(node.val);
+            if (node.left !== null) {
+                nextList.push(node.left);
+            }
+            if (node.right !== null) {
+                nextList.push(node.right);
+            }
+        }
+        result.unshift(arr);
+        if (nextList.length) {
+            order(nextList);
+        }
+    }
+    return result;
+};
+```
+
+### 2.7 __修剪二叉搜索树__：给定一个二叉搜索树，同时给定最小边界L 和最大边界 R。通过修剪二叉搜索树，使得所有节点的值在[L, R]中 (R>=L) 。你可能需要改变树的根节点，所以结果应当返回修剪好的二叉搜索树的新的根节点。
+
+```
+var trimBST = function(root, L, R) {
+
+    function trim(node) {
+        if (node === null) {
+            return null;
+        }
+        let val = node.val;
+        if (val < L) {
+            return trim(node.right);
+        }
+        if (val > R) {
+            return trim(node.left);
+        }
+        node.left = trim(node.left);
+        node.right = trim(node.right);
+        return node;
+    }
+    return trim(root);
+};
+```

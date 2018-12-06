@@ -146,6 +146,10 @@ gulp tp
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/01/index.html#letter-paper)
 + linear-gradient box-shadow 属性的妙用
 
+#### css07-按钮loading效果
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/01/index.html#loading)
++ 纯 CSS loading 动画，copy自张鑫旭博客
+
 ---
 
 ### 【js练习】一个轮播demo

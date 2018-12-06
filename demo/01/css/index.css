@@ -46,7 +46,7 @@ ol {
 }
 #nav li.active {
   background: #666;
-  border-bottom: 2px solid gold;
+  border-bottom: 2px solid #666;
 }
 #nav li::before {
   content: '';
@@ -70,7 +70,7 @@ ol {
 #water-ripple {
   width: 800px;
   height: 600px;
-  background: url(https://img.ykclass.com/dist/img/p/index-banner.png) no-repeat;
+  background: url(../images/bg.jpg) no-repeat;
   background-attachment: fixed;
   background-position: top left;
   background-size: auto 100%;
@@ -88,7 +88,7 @@ ol {
   width: 10px;
   height: 10px;
   border-radius: 300px;
-  background: url(https://img.ykclass.com/dist/img/p/index-banner.png);
+  background: url(../images/bg.jpg);
   background-attachment: fixed;
   background-position: top left;
   background-size: 100%;
@@ -318,6 +318,64 @@ ol {
   left: 18px;
   height: 20px;
   border-radius: 50%;
+}
+#loading {
+  /* 按钮loading */
+  /* loading动画 */
+}
+#loading .btn {
+  margin-right: 20px;
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  box-sizing: border-box;
+  line-height: 38px;
+  vertical-align: top;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #318158;
+  outline: none;
+  cursor: pointer;
+  background: #37a779;
+  color: #333;
+}
+#loading .loading {
+  position: relative;
+}
+#loading .loading::first-line {
+  color: transparent;
+}
+#loading .loading::before {
+  width: 4px;
+  height: 4px;
+  margin: auto;
+  content: '';
+  -webkit-animation: spinZoom 1s steps(8) infinite;
+  animation: spinZoom 1s steps(8) infinite;
+  border-radius: 100%;
+  box-shadow: 0 -10px 0 1px currentColor, 10px 0 currentColor, 0 10px currentColor, -10px 0 currentColor, -7px -7px 0 0.5px currentColor, 7px -7px 0 1.5px currentColor, 7px 7px currentColor, -7px 7px currentColor;
+  /* center */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+@-webkit-keyframes spinZoom {
+  0% {
+    -webkit-transform: scale(0.75) rotate(0);
+  }
+  100% {
+    -webkit-transform: scale(0.75) rotate(360deg);
+  }
+}
+@keyframes spinZoom {
+  0% {
+    transform: scale(0.75) rotate(0);
+  }
+  100% {
+    transform: scale(0.75) rotate(360deg);
+  }
 }
 #bottom {
   text-align: center;

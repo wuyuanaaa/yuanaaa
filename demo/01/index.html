@@ -17,6 +17,7 @@
         <li>边框转动效果</li>
         <li>两种小球移动效果</li>
         <li>信纸效果</li>
+        <li>按钮loading效果</li>
     </ul>
 </div>
 
@@ -70,6 +71,14 @@
     <div class="demo-title">6、信纸效果</div>
     <div id="letter-paper">
 
+    </div>
+</div>
+
+<div class="demo-wrapper">
+    <div class="demo-title">7、按钮loading效果</div>
+    <div id="loading">
+        <a href="javascript:;" class="btn loading">点击添加loading</a>
+        <button class="btn">点击添加loading</button>
     </div>
 </div>
 
@@ -172,7 +181,16 @@
                     }
                 })
             }
-        })()
+        })();
+
+        // 按钮loading效果
+        (function () {
+            var btns = $('#loading .btn');
+            btns.on('click', function () {
+                $(this).toggleClass('loading')
+            })
+
+        })();
 
     })
 

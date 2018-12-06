@@ -1,0 +1,334 @@
+// 公共样式
+* {
+  margin: 0;
+  padding: 0;
+}
+// 清除浮动
+.clearfix:after, .clearfix:before {
+  content: "";
+  display: table
+}
+.clearfix:after {
+  clear: both
+}
+.clearfix {
+  *zoom: 1
+}
+
+ul,ol {
+  list-style: none;
+}
+
+.demo-wrapper {
+  padding: 20px 0 20px 20px;
+  .demo-title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+// 跟随鼠标方向进入动效导航
+#nav {
+  list-style: none;
+  width: 100%;
+  background: #000;
+  li {
+    position: relative;
+    float: left;
+    padding: 10px 20px;
+    font-size: 18px;
+    line-height: 1;
+    transition: all .2s linear;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    color: #83d0f2;
+    &:hover {
+      color: #fff;
+    }
+  }
+  li.active {
+    background: #666;
+    border-bottom: 2px solid gold;
+  }
+  li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 0;
+    height: 100%;
+    border-bottom: 2px solid gold;
+    transition: all .2s linear;
+  }
+  li:hover::before {
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition-delay: 0.2s;
+    //z-index: -1;
+  }
+  li:hover ~ li::before {
+    left: 0;
+  }
+}
+
+
+// 水波纹
+#water-ripple {
+  width: 800px;
+  height: 600px;
+  background: url(https://img.ykclass.com/dist/img/p/index-banner.png) no-repeat;
+  background-attachment: fixed;
+  background-position: top left;
+  background-size:  auto 100%;
+  overflow: hidden;
+  .wave-position {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+  }
+  .wave {
+    position: absolute;
+    top: 145px;
+    left: 145px;
+    width: 10px;
+    height: 10px;
+    border-radius: 300px;
+    background: url(https://img.ykclass.com/dist/img/p/index-banner.png);
+    background-attachment: fixed;
+    background-position: top left;
+    background-size: 100%;
+    opacity: 0;
+  }
+  .wave0 {
+    z-index: 2;
+    background-size: auto 105%;
+    animation: waterMove 1s forwards;
+  }
+  .wave1 {
+    z-index: 3;
+    background-size: auto 102%;
+    animation: waterMove 1.1s 0.2s forwards;
+  }
+  .wave2 {
+    z-index: 4;
+    background-size: auto 104%;
+    animation: waterMove 1.2s 0.4s forwards;
+  }
+  .wave3 {
+    z-index: 5;
+    background-size: auto 101%;
+    animation: waterMove 1.3s 0.5s forwards;
+  }
+  .wave4 {
+    z-index: 6;
+    background-size: auto 102%;
+    animation: waterMove 1.4s 0.8s forwards;
+  }
+  .wave5 {
+    z-index: 7;
+    background-size: auto 100%;
+    animation: waterMove 1.5s 0.9s forwards;
+  }
+}
+
+@keyframes waterMove {
+  0% {
+    top: 145px;
+    left: 145px;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+
+// 仿ios按钮
+#toggle {
+  position: relative;
+  width: 70px;
+  height: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #ccc;
+  .check {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    opacity: 0;
+  }
+  .track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .05);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  }
+  .switch {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    right: 32px;
+    border-radius: 18px;
+    background: #fff;
+    transition: 0.4s cubic-bezier(0.785, 0.135, 0.150, 0.860);
+    transition-property: left,right;
+    transition-delay: 0s , .05s;
+  }
+  .check:checked ~ .track {
+    box-shadow: inset 0 0 0 22px #4bd863;
+  }
+  .check:checked ~ .switch {
+    left: 32px;
+    right: 2px;
+    top: 2px;
+    bottom: 2px;
+    transition-delay: 0.05s , 0s;
+  }
+}
+
+
+// 边框转动效果
+#rotary-border {
+  .box {
+    width: 300px;
+    height: 240px;
+    background: #ccc;
+    background: linear-gradient(90deg, #000 50%, transparent 0) repeat-x,
+    linear-gradient(180deg, #000 50%, transparent 0) repeat-y,
+    linear-gradient(270deg, #000 50%, transparent 0) repeat-x,
+    linear-gradient(0deg, #000 50%, transparent 0) repeat-y;
+    background-size: 8px 1px, 1px 8px, 8px 1px, 1px 8px;
+    background-position: 0 0 , 100% 0, 100% 100%, 0 100%;
+    animation: borderMove 0.5s infinite linear;
+  }
+
+  @keyframes borderMove {
+    100% {
+      background-position: 6% 0, 100% 6%, 94% 100% ,0 94% ;
+    }
+  }
+}
+
+
+// 两种小球移动效果
+#ball-move {
+  .box {
+    float: left;
+    margin-right: 20px;
+    width: 200px;
+    border: 1px dashed #000;
+    background: #dfdfdf;
+  }
+  /*demo1*/
+  .list1 {
+    width: 160px;
+    height: 20px;
+    margin: 50px;
+    .list {
+      position: relative;
+      box-sizing: border-box;
+      float: left;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #fff;
+      background: transparent;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .list+.list {
+      margin-left: 20px;
+    }
+    .list::before {
+      position: absolute;
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      left: 20px;
+      top: -2px;
+      transition: left 0.1s ease-in-out;
+    }
+    .active::before{
+      left: -2px;
+    }
+    .active~.list::before {
+      left: -20px;
+    }
+  }
+
+  /*demo2*/
+  .list2 {
+    position: relative;
+    width: 100px;
+    height: 20px;
+    margin: 50px;
+    .list {
+      box-sizing: border-box;
+      float: left;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #fff;
+      background: transparent;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .list+.list {
+      margin-left: 20px;
+    }
+    .active{
+      position: absolute;
+      left: 0;
+      right: 80px;
+      top: 0;
+      bottom: 0;
+      background: #fff;
+      border-radius: 50%;
+      transition: 0.2s ease-in-out;
+      transition-property: left, right;
+    }
+    .activeToRight {
+      transition-delay: 0.08s, 0s;
+    }
+    .activeToLeft {
+      transition-delay: 0s, 0.08s;
+    }
+  }
+}
+
+
+
+
+
+
+// 底部
+#bottom {
+  text-align: center;
+  line-height: 30px;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.05);
+  color: #2c414a;
+  a {
+    color: #2c414a;
+  }
+}

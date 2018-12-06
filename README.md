@@ -1,5 +1,6 @@
 # yuanaaa
 
+
 ---
 
 ### 【阅读笔记】
@@ -121,25 +122,29 @@ gulp tp
 ---
 
 ### 【css练习】
-#### css01-固定背景实现CSS水波纹
+#### css01-固定背景实现水波纹
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/01/index.html#water-ripple)
 + 主要利用多层叠加div的background-attachment、background-size、animation属性
 
-#### css02-CSS仿ios按钮
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/02/index.html#toggle)
+#### css02-仿ios按钮
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/01/index.html#toggle)
 + 主要利用position、transition属性
 
-#### css03-CSS实现跟随鼠标方向进入动效导航
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/03/index.html#nav)
+#### css03-跟随鼠标方向进入动效导航
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/01/index.html#nav)
 + 相邻选择器‘~’的妙用
 
-#### css04-CSS实现边框转动效果
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/04/index.html#rotary-border)
+#### css04-边框转动效果
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/01/index.html#rotary-border)
 + 主要利用background的linear-gradient径向渐变
 
-#### css05-CSS实现两种小球移动效果
-[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/05/index.html#ball-move)
+#### css05-两种小球移动效果
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/01/index.html#ball-move)
 + css02及css03的延伸
+
+#### css06-信纸效果
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/01/index.html#letter-paper)
++ linear-gradient box-shadow 属性的妙用
 
 ---
 

@@ -290,6 +290,35 @@ ol {
 #ball-move .list2 .activeToLeft {
   transition-delay: 0s, 0.08s;
 }
+#letter-paper {
+  position: relative;
+  width: 400px;
+  height: 800px;
+  background-color: #efefef;
+  background-image: linear-gradient(#e7e6e6 1px, transparent 0), linear-gradient(90deg, #e7e6e6 1px, transparent 0);
+  background-size: 800px 20px, 20px 800px;
+  background-position: center;
+}
+#letter-paper::after,
+#letter-paper::before {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+  width: 20px;
+  background: #fff;
+  box-shadow: 0 68px 0 0 #fff, 0 calc(68px * 2) 0 0 #fff, 0 calc(68px * 3) 0 0 #fff, 0 calc(68px * 4) 0 0 #fff, 0 calc(68px * 5) 0 0 #fff, 0 -68px 0 0 #fff, 0 calc(-68px * 2) 0 0 #fff, 0 calc(-68px * 3) 0 0 #fff, 0 calc(-68px * 4) 0 0 #fff, 0 calc(-68px * 5) 0 0 #fff;
+}
+#letter-paper::before {
+  height: 10px;
+  left: 0;
+}
+#letter-paper::after {
+  left: 18px;
+  height: 20px;
+  border-radius: 50%;
+}
 #bottom {
   text-align: center;
   line-height: 30px;

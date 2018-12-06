@@ -70,7 +70,7 @@
 <div class="demo-wrapper">
     <div class="demo-title">6、信纸效果</div>
     <div id="letter-paper">
-
+        ♥...
     </div>
 </div>
 
@@ -79,6 +79,13 @@
     <div id="loading">
         <a href="javascript:;" class="btn loading">点击添加loading</a>
         <button class="btn">点击添加loading</button>
+    </div>
+</div>
+
+<div class="demo-wrapper">
+    <div class="demo-title">8、点击出现小心心</div>
+    <div id="lovely">
+        ♥点击页面即可
     </div>
 </div>
 
@@ -191,6 +198,30 @@
             })
 
         })();
+
+        // 点击出现小心心
+        (function () {
+            $('html body').on('click', function (e) {
+                var x = e.pageX, y = e.pageY;
+                var fontSize = 12 + Math.random() * 10;
+                var color = 'rgba('+ Math.floor(255 * Math.random()) + ',' + Math.floor(255 * Math.random()) + ',' + Math.floor(255 * Math.random()) + ',' + Math.random() +')';
+                var span = document.createElement('span');
+                $(span).addClass('popup').css({
+                    'fontSize': fontSize + 'px',
+                    'color': color
+                }).text('♥');
+
+                (this).append(span);
+
+                span.addEventListener('animationend', function () {
+                    span.parentNode.removeChild(span);
+                });
+
+                span.style.left = (x - span.clientWidth / 2) + 'px';
+                span.style.top = (y - span.clientHeight) + 'px';
+            })
+        })();
+
 
     })
 

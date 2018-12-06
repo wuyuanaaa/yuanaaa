@@ -320,13 +320,17 @@ ul,ol {
 // 信纸效果
 #letter-paper {
   position: relative;
+  padding: 40px 60px;
+  box-sizing: border-box;
   width: 400px;
   height: 800px;
-  background-color: #efefef;
+  font-size: 20px;
   background-image: linear-gradient(#e7e6e6 1px, transparent 0),
   linear-gradient(90deg, #e7e6e6 1px, transparent 0);
   background-size: 800px 20px, 20px 800px;
   background-position: center;
+  background-color: #efefef;
+  color: #333;
   &::after,
   &::before {
     content: '';
@@ -416,6 +420,26 @@ ul,ol {
 }
 
 
+// 点击出现小心心
+.popup {
+  position: absolute;
+  z-index: 9999;
+  user-select: none;
+  white-space: nowrap;
+  animation: lovelyMove 1s;
+}
+
+@keyframes lovelyMove {
+  0%, 100% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -50px, 0);
+  }
+}
 
 
 

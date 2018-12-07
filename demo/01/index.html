@@ -10,6 +10,7 @@
 
 <div class="demo-wrapper">
     <div class="demo-title">1、跟随鼠标方向进入动效导航</div>
+    <p class="demo-info">在导航条上平移鼠标</p>
     <ul id="nav" class="clearfix">
         <li class="active">顶部</li>
         <li>水波纹</li>
@@ -18,11 +19,13 @@
         <li>两种小球移动效果</li>
         <li>信纸效果</li>
         <li>按钮loading效果</li>
+        <li>点击出现小心心</li>
     </ul>
 </div>
 
 <div class="demo-wrapper">
     <div class="demo-title">2、水波纹</div>
+    <p class="demo-info">点击图片区域</p>
     <div id="water-ripple">
 
     </div>
@@ -30,6 +33,7 @@
 
 <div class="demo-wrapper">
     <div class="demo-title">3、仿ios按钮</div>
+    <p class="demo-info">点击按钮</p>
     <div id="toggle">
         <input type="checkbox" class="check">
         <b class="b track"></b>
@@ -39,6 +43,7 @@
 
 <div class="demo-wrapper">
     <div class="demo-title">4、边框转动效果</div>
+    <p class="demo-info">就看看吧</p>
     <div id="rotary-border">
         <div class="box">
 
@@ -48,6 +53,7 @@
 
 <div class="demo-wrapper">
     <div class="demo-title">5、两种小球移动效果</div>
+    <p class="demo-info">点击小球</p>
     <div id="ball-move" class="clearfix">
         <div class="box">
             <ul class="lists list1">
@@ -69,13 +75,15 @@
 
 <div class="demo-wrapper">
     <div class="demo-title">6、信纸效果</div>
-    <div id="letter-paper">
+    <p class="demo-info">可以写</p>
+    <div id="letter-paper" contenteditable="true">
         ♥...
     </div>
 </div>
 
 <div class="demo-wrapper">
     <div class="demo-title">7、按钮loading效果</div>
+    <p class="demo-info">点击按钮添加/取消 loading </p>
     <div id="loading">
         <a href="javascript:;" class="btn loading">点击添加loading</a>
         <button class="btn">点击添加loading</button>
@@ -84,8 +92,8 @@
 
 <div class="demo-wrapper">
     <div class="demo-title">8、点击出现小心心</div>
+    <p class="demo-info">♥点击页面即可</p>
     <div id="lovely">
-        ♥点击页面即可
     </div>
 </div>
 
@@ -203,8 +211,8 @@
         (function () {
             $('html body').on('click', function (e) {
                 var x = e.pageX, y = e.pageY;
-                var fontSize = 12 + Math.random() * 10;
-                var color = 'rgba('+ Math.floor(255 * Math.random()) + ',' + Math.floor(255 * Math.random()) + ',' + Math.floor(255 * Math.random()) + ',' + Math.random() +')';
+                var fontSize = 18 + Math.random() * 16;
+                var color = 'rgba('+ Math.floor(255 * Math.random()) + ',' + Math.floor(255 * Math.random()) + ',' + Math.floor(255 * Math.random()) + ',' + (0.2 + Math.random() * 0.8) +')';
                 var span = document.createElement('span');
                 $(span).addClass('popup').css({
                     'fontSize': fontSize + 'px',

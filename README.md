@@ -150,6 +150,10 @@ gulp tp
 [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/01/index.html#loading)
 + 纯 CSS loading 动画，copy自张鑫旭博客
 
+#### css08-点击出现小心心
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/01)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/01/index.html#lovely)
++ 讨女朋友开心
+
 ---
 
 ### 【js练习】一个轮播demo

@@ -10,6 +10,7 @@
 + [CSS三栏布局](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-03.md) _--2018.11.03_
 + [js文件操作总结一：图片篇](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-04.md) _--2018.11.06_
 + [js二叉树整理](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-05.md) _--2018.11.28_
++ [代码片段整理](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-06.md) _--2018.12.08_
 ---
 
 ### 【js练习】面对对象版气泡背景生成

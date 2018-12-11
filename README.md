@@ -13,6 +13,25 @@
 + [代码片段整理](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-06.md) _--2018.12.08_
 ---
 
+### 【js练习】面对对象版瀑布流
+
+> 实现根据图片数据渲染瀑布流
+
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/falls)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/falls/index.html)
+
+#### 使用说明
+
+- 待更新
+
+```
+falls.init('#root', {
+        imgList: src
+    })     // src 为一个包含多个对象的数组，每个对象都含有'src','alt'属性；
+```
+
+
+---
+
 ### 【js练习】面对对象版气泡背景生成
 
 > 实现添加气泡背景

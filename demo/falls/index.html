@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,body {
+            width: 100%;
+        }
+
+        img {
+            border: 0;
+            vertical-align: top;
+        }
+
+        #root {
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        ._list-item {
+            border: 2px solid gold;
+        }
+    </style>
+</head>
+<body>
+
+<div id="root">
+
+
+</div>
+
+</body>
+</html>
+<script>
+
+    console.log(document.querySelector('#root').clientWidth);
+
+    const falls = (function () {
+        /*
+        * 1、获取页面宽度
+        * 2、计算每行的图片张数，根据图片张数设置父容器宽度保证父容器居中
+        * 3、依次生成子元素并且添加到父容器
+        *       计算子元素的top 及 left
+        * 4、添加父容器至 wrapper 容器
+        * 5、绑定页面 resize 事件，进行重新布局
+        * */
+
+        const defaults = {
+            width: 220,
+            colSpace: 10,
+            rowSpace: 10,
+            itemClass: '_list-item' // 暴露的类名，方便修改边框等样式
+        };
+
+        const Falls = function(el, options) {
+            this.el = document.querySelector(el);
+            this.imgList = options.imgList;
+            this.colSpace = options.colSpace;
+            this.rowSpace = options.rowSpace;
+            this.width = options.width;
+            this.itemClass = options.itemClass;
+            this.first = true;
+        };
+
+        const prototype = Falls.prototype;
+
+        prototype.initialize = function () {
+            var rootEl = document.createElement('div');
+
+            rootEl.style.margin = '0 auto';
+            rootEl.style.position = 'relative';
+
+            this.rootEl = rootEl;
+            this.el.appendChild(this.rootEl);
+        };
+
+        prototype.storageHeight = function () {
+            var heightArr = [];
+            for (var i = 0; i < this.col; i++) {
+                heightArr.push({
+                    left: this.colWidth * i,
+                    height: 0
+                })
+            }
+            this.heightArr = heightArr;
+        };
+
+        prototype.addItem = function () {
+            var _this = this,
+                maxHeight = 0,
+                heightArr = this.heightArr,
+                imgList = this.imgList.slice();
+
+            (function addImg() {
+                var current = imgList.shift();
+                let top = heightArr[0].height, index = 0;
+                for (var j = 1, hLen = heightArr.length; j < hLen; j++) {
+                    if (heightArr[j].height < top) {
+                        top = heightArr[j].height;
+                        index = j;
+                    }
+                }
+                var item = document.createElement('div');
+                item.style.position = 'absolute';
+                item.style.top = top + 'px';
+                item.style.left = heightArr[index].left + 'px';
+                item.style.width = _this.width + 'px';
+                item.style.boxSizing = 'border-box';
+                item.classList.add(_this.itemClass);
+
+                var img = document.createElement('img');
+                img.style.width = '100%';
+                img.src = current.src;
+                img.alt = current.alt;
+
+                item.appendChild(img);
+                _this.rootEl.appendChild(item);
+
+                img.onload = function() {
+                    heightArr[index].height += item.offsetHeight + _this.rowSpace;
+                    maxHeight = maxHeight < heightArr[index].height ? heightArr[index].height : maxHeight;
+
+                    _this.rootEl.style.height = maxHeight + 'px';
+                    if (imgList.length) {
+                        addImg();
+                    }
+                };
+            })();
+        };
+
+        prototype.setFalls = function () {
+            var wrapWidth = this.el.clientWidth;
+
+            this.colWidth = this.width + this.colSpace;
+
+            this.col = Math.floor((wrapWidth + this.colSpace) / this.colWidth); // 获取图片列数
+            this.rootEl.style.width = this.col * this.colWidth - this.colSpace + 'px';  // 根元素的宽度
+
+            if (this.first) {   // 如果初次渲染，直接执行
+                this.storageHeight();
+                this.addItem();
+                this.first = false;
+                this.lastCol = this.col;
+            } else {    // 非初次渲染，判断列数是否变化
+                if (this.lastCol !== this.col) {
+                    this.rootEl.innerHTML = '';
+                    this.storageHeight();
+                    this.addItem();
+                    this.lastCol = this.col;
+                }
+            }
+        };
+
+        prototype.bindEvent = function () {
+            window.addEventListener('resize', this.setFalls.bind(this));
+        };
+
+        prototype.init = function () {
+            this.initialize();
+            this.setFalls();
+            this.bindEvent();
+        };
+
+        function extend(target, varArgs) {
+            if (target == null) {
+                throw new TypeError('Cannot convert undefined or null to object');
+            }
+            var to = Object(target);
+
+            for (var index = 1; index < arguments.length; index++) {
+                var nextSource = arguments[index];
+
+                if (nextSource != null) {
+                    for (var nextKey in nextSource) {
+                        if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                            to[nextKey] = nextSource[nextKey];
+                        }
+                    }
+                }
+            }
+            return to;
+        }
+
+        const init = function (el, options) {
+            options = extend([], defaults, options);
+            return new Falls(el, options).init();
+        };
+
+        return {
+            init: init
+        }
+    })();
+
+    const src = [
+        {
+            src: 'https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=de08a1f093510fb367197197e932c893/b999a9014c086e062550d0020f087bf40bd1cbfb.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=a284ee4bc595d143c576e22343f18296/0b7b02087bf40ad182fac5ab5a2c11dfa9ecce58.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=824992472,2286919419&fm=200&gp=0.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=406175518,4037495904&fm=200&gp=0.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2753573526,1935241241&fm=26&gp=0.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1430089027,38460885&fm=26&gp=0.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3803529417,1492966066&fm=200&gp=0.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2072264181,2614641975&fm=26&gp=0.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2458664112,880438071&fm=26&gp=0.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2784736348,2318247100&fm=26&gp=0.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3424982322,1872704616&fm=26&gp=0.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1145333052,4283670879&fm=26&gp=0.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1513560683,1169575300&fm=26&gp=0.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3649472783,737820171&fm=26&gp=0.jpg',
+            alt: 'img'
+        },
+        {
+            src: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1777740503,3504917900&fm=26&gp=0.jpg',
+            alt: 'img'
+        }
+    ];
+
+    falls.init('#root', {
+        imgList: src
+    })
+
+</script>

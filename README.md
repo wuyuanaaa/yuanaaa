@@ -11,6 +11,7 @@
 + [js文件操作总结一：图片篇](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-04.md) _--2018.11.06_
 + [js二叉树整理](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-05.md) _--2018.11.28_
 + [代码片段整理](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-06.md) _--2018.12.08_
++ [原生js实现瀑布流](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-07.md) _--2018.12.12_
 ---
 
 ### 【js练习】面对对象版瀑布流
@@ -21,14 +22,17 @@
 
 #### 使用说明
 
-- 待更新
-
+- 默认参数调用方式如下：
 ```
-falls.init('#root', {
-        imgList: src
-    })     // src 为一个包含多个对象的数组，每个对象都含有'src','alt'属性；
+var fall = falls.init('#root', {
+    imgList: src
+})     // src 为一个包含多个对象的数组，每个对象都含有'src','alt'属性；
 ```
-
+- 支持图片数据新增时，渲染新增数据
+```
+fall.addImgReload(src);
+```
+- 完整说明[点击这里](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-07.md)
 
 ---
 

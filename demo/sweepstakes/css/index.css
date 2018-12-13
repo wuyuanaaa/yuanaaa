@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  display: flex;
+  margin: 100px auto;
+  width: 600px;
+  height: 600px;
+  flex-wrap: wrap;
+  background: #ccc;
+}
+.box .item,
+.box .begin {
+  box-sizing: border-box;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  line-height: 200px;
+  border: 1px solid #318158;
+  transition: all 0.2s;
+}
+.box .begin {
+  background: #158556;
+  font-size: 28px;
+  order: 5;
+  cursor: pointer;
+}
+.box .item.active {
+  background: gold;
+}
+.box .item:nth-child(1) {
+  order: 1;
+}
+.box .item:nth-child(2) {
+  order: 2;
+}
+.box .item:nth-child(3) {
+  order: 3;
+}
+.box .item:nth-child(4) {
+  order: 6;
+}
+.box .item:nth-child(5) {
+  order: 9;
+}
+.box .item:nth-child(6) {
+  order: 8;
+}
+.box .item:nth-child(7) {
+  order: 7;
+}
+.box .item:nth-child(8) {
+  order: 4;
+}

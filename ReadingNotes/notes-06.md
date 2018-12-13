@@ -28,10 +28,6 @@ __其他__
 
 - [数据类型](#数据类型-type)
 - [](#)
-- [](#)
-- [](#)
-- [](#)
-
 
 ---
 
@@ -93,8 +89,14 @@ const pipe = (...fn) => (value) => fn.slice().reduce((fn1, fn2) => fn2(fn1), val
 
 ### 防抖函数 debounce
 
+- 防抖函数1
+
 ```
-function debounce(func, wait, immediate) {
+/*
+* immediate = true 初始立即执行一次
+* 之后一段时间内只在事件停止后执行一次
+* */
+function debounce(func, wait = 1000, immediate = true) {
     let timeout;
     return function () {
         var context = this;
@@ -114,7 +116,43 @@ function debounce(func, wait, immediate) {
 // immediate 是否立即执行
 ```
 
+- 防抖函数2
+
+```
+/*
+* immediate = true 只在事件触发初始执行一次，事件结束后 wait 时间内，不触发事件，
+* 事件结束后 wait 时间后，首次触发再执行一次
+* */
+function debounce(func, wait = 1000, immediate = true) {
+    let timer, context, args;
+    const later = () => setTimeout(() => {
+        timer = null;
+        if(!immediate) {
+            func.apply(context, args);
+            context = args = null;
+        }
+    }, wait);
+
+    return function (...params) {
+        if (!timer) {
+            timer = later();
+            if (immediate) {
+                func.apply(this, params);
+            } else {
+                context = this;
+                args = params;
+            }
+        } else {
+            clearTimeout(timer);
+            timer = later();
+        }
+    }
+}
+```
+
 ### 节流函数 throttle
+
+- 节流函数1
 
 ```
 function throttle(func, wait) {
@@ -129,6 +167,60 @@ function throttle(func, wait) {
             }, wait)
         }
     }
+}
+```
+
+- 节流函数2
+
+```
+/**
+ * underscore 节流函数，返回函数连续调用时，func 执行频率限定为 次 / wait
+ *
+ * @param  {function}   func      回调函数
+ * @param  {number}     wait      表示时间窗口的间隔
+ * @param  {object}     options   如果想忽略开始函数的的调用，传入{leading: false}。
+ *                                如果想忽略结尾函数的调用，传入{trailing: false}
+ *                                两者不能共存，否则函数不能执行
+ * @return {function}             返回客户调用函数
+ */
+function throttle (func, wait, options = {}) {
+    var context, args, result;
+    var timeout = null;
+    var previous = 0;
+
+    var later = function () {
+        previous = options.leading === false ? 0 : +new Date();
+        timeout = null;
+        result = func.apply(context, args);
+        if (!timeout) {
+            context = args = null;
+        }
+    };
+
+    return function () {
+        var now = +new Date();
+        if (!previous && options.leading === false) {
+            previous = now;
+        }
+        var remaining = wait - (now - previous);
+        context = this;
+        args = arguments;
+
+        if (remaining <= 0 || remaining > wait) {
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout = null;
+            }
+            previous = now;
+            result = func.apply(context, args);
+            if (!timeout) {
+                context = args = null;
+            }
+        } else if (!timeout && options.trailing !== false) {
+            timeout = setTimeout(later, remaining);
+        }
+        return result;
+    };
 }
 ```
 

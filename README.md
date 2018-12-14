@@ -14,6 +14,23 @@
 + [原生js实现瀑布流](https://github.com/wuyuanaaa/yuanaaa/blob/master/ReadingNotes/notes-07.md) _--2018.12.12_
 ---
 
+### 【js练习】一个假的九宫格抽奖
+
+> 简单实现，没有做封装
+
+[文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/demo/sweepstakes)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/demo/sweepstakes/index.html)
+
+#### 使用说明
+
+- 原生 js 实现，引用 JQ 只为 消息提醒 layer 提供依赖；
+- CSS 用到了 flex 布局，需考虑兼容
+- 可以设定以下参数
+    - 转多少圈后开始抽奖
+    - 各个奖品的概率
+    - 能够抽奖的次数
+
+---
+
 ### 【js练习】面对对象版瀑布流
 
 > 实现根据图片数据渲染瀑布流

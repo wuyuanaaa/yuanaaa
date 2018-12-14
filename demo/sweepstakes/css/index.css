@@ -5,18 +5,18 @@
 .box {
   display: flex;
   margin: 100px auto;
-  width: 600px;
-  height: 600px;
+  width: 450px;
+  height: 450px;
   flex-wrap: wrap;
   background: #ccc;
 }
 .box .item,
 .box .begin {
   box-sizing: border-box;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   text-align: center;
-  line-height: 200px;
+  line-height: 150px;
   border: 1px solid #318158;
   transition: all 0.2s;
 }

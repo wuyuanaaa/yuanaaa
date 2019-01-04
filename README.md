@@ -116,7 +116,7 @@ bobbles.init(num, options);      // num 表示气泡数量      options 表示�
 - 1、拷贝所有文件至项目文件夹
 - 2、命令行中输入以下
 ```
-npm init
+npm install
 ```
 - 3、覆盖node_modules_revise文件夹中的文件至node_modules(此处对gulp-rev gulp-rev-collector进行了部分修改)
 #### 命令列表

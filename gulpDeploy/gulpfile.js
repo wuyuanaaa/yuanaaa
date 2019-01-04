@@ -37,6 +37,10 @@ gulp.task('less', function () {
     return gulp.src(PATHS.LESS)
     // 编译为css
         .pipe(less())
+        .on('error', function (error) {
+            console.error(error.toString());
+            this.emit('end');
+        })
         // 另存css
         .pipe(gulp.dest('./current/css/'))
 });

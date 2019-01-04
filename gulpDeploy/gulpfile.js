@@ -88,7 +88,7 @@ gulp.task('rev', ['css', 'js'], function () {
 gulp.task('tinypng', function () {
     return gulp.src('current/images/*.{png,jpg}')
         .pipe(tinypng({
-            key: 'IgMedJATOemvh4lH7b6Wm708VONiGIk5',
+            key: 'IgMedJATOemvh4lH7b6Wm**********',
             sigFile: 'current/images/.tinypng-sigs',
             log: true
         }))

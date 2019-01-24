@@ -16,14 +16,14 @@
 
 ```
 typeof undefined;           // "undefined"
-typeof true;                // "boolean"
-typeof 42;                  // "number"
-typeof "42";                // "string"
-typeof { life: 42 };        // "object"
+typeof true;                // 'boolean'
+typeof 42;                  // 'number'
+typeof '42';                // 'string'
+typeof { life: 42 };        // 'object'
 // ES6中新加入的类型
-typeof Symbol();            // "symbol"
+typeof Symbol();            // 'symbol'
 // 例外
-typeof null;                // "object"
+typeof null;                // 'object'
 ```
 
 > 可以用复合条件来检测null值的类型

@@ -100,9 +100,9 @@ bobbles.init(num, options);      // num 表示气泡数量      options 表示�
 
  [文件地址](https://github.com/wuyuanaaa/yuanaaa/tree/master/slider-new)    [页面预览](https://wuyuanaaa.github.io/yuanaaa/slider-new/index.html)
 
- - 08.11.10：实现初始版本；
- - 08.11.11：新增父类继承，添加淡出淡入新模式
- - 08.11.15：已经更新至[yuanaaa.js的3.0版](https://github.com/wuyuanaaa/yuanaaa.js/tree/master/3.0)，此版demo不再更新
+ - 18.11.10：实现初始版本；
+ - 18.11.11：新增父类继承，添加淡出淡入新模式
+ - 18.11.15：已经更新至[yuanaaa.js的3.0版](https://github.com/wuyuanaaa/yuanaaa.js/tree/master/3.0)，此版demo不再更新
 
 ---
 
@@ -122,7 +122,11 @@ bobbles.init(num, options);      // num 表示气泡数量      options 表示�
 + 【gulp-sequence】--gulp的同步执行
 #### 使用方法
 - 1、拷贝所有文件至项目文件夹
-- 2、命令行中输入以下
+- 2、全局安装gulp
+```
+npm install gulp -g
+```
+- 3、在项目文件夹内运行以下命令
 ```
 npm install
 ```
@@ -141,6 +145,10 @@ gulp tp
 #### 注意事项
 - 1、因为gulp-rev gulp-rev-collector进行了部分修改，所以gulp-rev建议版本为@8.0.0，gulp-rev-collector建议版本为@1.1.1，修改过程参考自[此处](https://www.cnblogs.com/lakeInHeart/p/7257443.html)
 - 2、如需修改目录结构需对应修改gulpfile.js文件内容
+- 3、px2rem 默认 1rem = 75px;
+
+#### 更新
+- 19.4.7：更新支持px2rem；
 
 ---
 

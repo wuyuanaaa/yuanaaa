@@ -130,7 +130,7 @@ npm install gulp -g
 ```
 npm install
 ```
-- 3、覆盖node_modules_revise文件夹中的文件至node_modules(此处对gulp-rev gulp-rev-collector进行了部分修改)
+- 4、覆盖node_modules_revise文件夹中的文件至node_modules(此处对gulp-rev gulp-rev-collector进行了部分修改)
 #### 命令列表
 ```
 // 启动browser-sync less文件变化后启动gulp-less

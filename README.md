@@ -133,8 +133,12 @@ npm install
 - 4、覆盖node_modules_revise文件夹中的文件至node_modules(此处对gulp-rev gulp-rev-collector进行了部分修改)
 #### 命令列表
 ```
-// 启动browser-sync less文件变化后启动gulp-less
+// 启动文件监听 less 文件中 px 转换 rem , 同 gulp m
 gulp
+// 启动文件监听 less 文件中 px 转换 rem
+gulp m
+// 启动文件监听 不进行 px 转换
+gulp pc
 // 同步执行 添加css3前缀 添加版本号
 gulp build
 // 图片压缩1（需要key）
@@ -149,6 +153,7 @@ gulp tp
 
 #### 更新
 - 19.4.7：更新支持px2rem；
+- 19.4.8：新增命令 PC 页面时不启用px2rem；
 
 ---
 

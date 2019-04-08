@@ -38,7 +38,7 @@ gulp.task('browser-Sync', function () {
 });
 
 // less编译
-gulp.task('less', function () {
+gulp.task('less-m', function () {
   var processors = [px2rem({remUnit: 75})];
 
   // 找到less文件
@@ -55,9 +55,27 @@ gulp.task('less', function () {
       .pipe(gulp.dest(PATHS.CSSDIR))
 });
 
+// less编译 PC
+gulp.task('less-pc', function () {
+  // 找到less文件
+  return gulp.src(PATHS.LESS)
+  // 编译为css
+    .pipe(less())
+    .on('error', function (error) {
+      console.error(error.toString());
+      this.emit('end');
+    })
+    // 另存css
+    .pipe(gulp.dest(PATHS.CSSDIR))
+});
+
 // 监听文件改动
-gulp.task('auto', function () {
-  return gulp.watch(PATHS.LESS, ['less'])
+gulp.task('auto-m', function () {
+  return gulp.watch(PATHS.LESS, ['less-m'])
+});
+
+gulp.task('auto-pc', function () {
+  return gulp.watch(PATHS.LESS, ['less-pc'])
 });
 
 // 添加CSS3兼容
@@ -115,4 +133,7 @@ gulp.task('tp', function () {
 
 gulp.task('build', sequence('css3', 'rev'));     // 添加css3兼容后增加版本号
 
-gulp.task('default', ['browser-Sync', 'auto']); // 定义默认任务 代码改动时自动更新
+gulp.task('default', ['browser-Sync', 'auto-m']); // 定义默认任务 代码改动时自动更新
+
+gulp.task('pc', ['browser-Sync', 'auto-pc']); // 定义默认任务 代码改动时自动更新
+gulp.task('m', ['browser-Sync', 'auto-m']); // 定义默认任务 代码改动时自动更新

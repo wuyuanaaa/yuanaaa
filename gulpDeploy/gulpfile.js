@@ -110,7 +110,7 @@ gulp.task('rev', ['css', 'js'], function () {
   return gulp.src(['current/**/*.json', 'current/*.html'])
       .pipe(revCollector({
         replaceReved: true
-      })).pipe(gulp.dest('PATHS.ROOT'))
+      })).pipe(gulp.dest(PATHS.ROOT))
 });
 
 
